@@ -1,0 +1,23 @@
+{% extends "switchblade_dashboard/base.html" %}
+{% load dashboard_tag %}
+{% load static %}
+
+{% block extraHead %}
+    <link rel="stylesheet" href="{% static 'switchblade_dashboard/css/base_report.css' %}">
+{% endblock %}
+
+{% block content_title_action %}
+    <a href="javascript:history.back();" class="btn btn-default">
+        <i class="fa fa-arrow-left"></i>
+        Back
+    </a>
+{% endblock content_title_action %}
+
+{% block content_main_row %}
+    <div class="row">
+        <div class="col-xs-12 content-expand-col">
+            {% report_simple_table list_data report_data %}
+        </div>
+    </div>
+{% endblock content_main_row %}
+

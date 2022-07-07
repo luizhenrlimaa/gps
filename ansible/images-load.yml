@@ -1,0 +1,10 @@
+
+- hosts:
+    - docker-managers
+    - docker-workers
+  become: yes
+  become_method: sudo
+  roles:
+    - docker-images-load
+
+

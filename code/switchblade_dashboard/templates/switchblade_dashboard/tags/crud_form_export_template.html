@@ -1,0 +1,67 @@
+{% load dashboard_tag %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block extraHead %}
+    <link rel="stylesheet" href="{% static 'switchblade_dashboard/css/tabbed_header_box.css' %}">
+{% endblock %}
+
+<form method="{{ data.Method|default:'POST' }}" action="{{ data.Buttons.Submit.1|default:"" }}" enctype="multipart/form-data">
+    <div class="box box-default">
+        <div class="box-header with-border">
+            <h3 class="box-title">{{ data.Header }}</h3>
+        </div>
+        <div class="box-body">
+            <div class="form-horizontal">
+                {% if 'FormHelper' in data %}
+                    {% crispy data.Form data.FormHelper %}
+                {% else %}
+                    {% crispy data.Form %}
+                {% endif %}
+            </div>
+        </div>
+            <div class="box-footer">
+                {% if data.ButtonBack %}
+                    <a href="javascript:history.back();" class="btn btn-default">{% trans "Back" %}</a>
+                {% endif %}
+                <div class="btn-group pull-right">
+                    <button type="button" class="btn btn-info" id="clearFilter" onclick="clean_form_data()">
+                        <i class="fa fa-filter"></i> Clear Filter
+                    </button>
+                    <button type="submit" class="btn btn-warning" name="submit-btn" value="export" onclick="updateForm()">
+                        <i class="fa fa-file-excel-o"></i> {% trans "Export Template" %}
+                    </button>
+                    <button type="submit" class="btn btn-success" name="submit-btn" value="import" onclick="updateForm()">
+                        <i class="fa fa-upload"></i> {% trans "Import Template" %}
+                    </button>
+                </div>
+            </div>
+    </div>
+</form>
+
+{% block extraJS %}
+    <script src="{% static 'switchblade_dashboard/js/keep_form_data.js' %}"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            syncFormData();
+        });
+
+        function updateForm() {
+            let fields = [];
+
+            {% for fieldName in data.Form.fields %}
+
+                let fieldId = 'id_{{ fieldName }}';
+                let element = document.getElementById(fieldId);
+
+                if (element) {
+                    fields.push(new FormField(fieldId, element.classList[0],  element.value === 'on' ? element.checked : element.value, []));
+                }
+
+            {% endfor %}
+
+            updateFormData({ fields: fields });
+        }
+    </script>
+{% endblock extraJS %}

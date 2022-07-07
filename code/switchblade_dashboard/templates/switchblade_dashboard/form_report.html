@@ -1,0 +1,9 @@
+{% extends "switchblade_dashboard/base.html" %}
+{% load dashboard_tag %}
+{% load static %}
+
+{% block content_header %} {% endblock %}
+
+{% block content_main %}
+    {% tabbed_header_box form_data Header 'Filters' 'fa-filter' menu_info %}
+{% endblock content_main %}

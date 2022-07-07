@@ -1,0 +1,181 @@
+.tabbed-box .form-group {
+    min-height: 60px;
+}
+
+.tabbed-box fieldset .form-group {
+    min-height: 34px;
+}
+
+.tabbed-box .selection:focus {
+    margin: 2px solid black !important;
+}
+
+.tabbed-box .select2-container--default.select2-container--focus .select2-selection--multiple,
+.tabbed-box .select2-container--default .select2-search--dropdown .select2-search__field {
+    border-color: #3C3A3A94 !important;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+
+    transition-property: border-color;
+    transition-duration: .6s;
+    transition-timing-function: linear;
+}
+
+.tabbed-box .form-control:focus {
+    border-color: #3C3A3A94 !important;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+
+    transition-property: border-color;
+    transition-duration: .6s;
+    transition-timing-function: linear;
+}
+
+.tabbed-box .box-tabs-content {
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    margin-bottom: 15px !important;
+}
+
+.tabbed-box-tab-selected-badge-counter,
+.tabbed-box-tab-selected-badge-counter-transparent {
+    margin-left: 2px;
+    margin-right: -6px;
+    background-color: transparent !important;
+}
+
+.tabbed-box-tab-selected-badge-counter-transparent {
+    color: transparent;
+    background-color: transparent;
+    border: 1px solid transparent;
+}
+
+.tabbed-box-tab-icon {
+    padding-right: 6px;
+}
+
+.tabbed-box .textarea {
+    height: 110px;
+    width: 100%;
+}
+
+.tabbed-box .box-footer {
+    border-radius: 0;
+}
+
+.nav-tabs-custom.box-tabs {
+    box-shadow: none;
+    background-color: transparent;
+}
+
+.nav-tabs-custom.box-tabs ul li {
+    margin-right: 0px;
+}
+
+.nav-tabs-custom.box-tabs .nav-tabs li:hover {
+    border-top-width: 3px;
+}
+
+.nav-tabs-custom.box-tabs .nav-tabs li.active:hover {
+    border-top-width: 2px;
+}
+
+.header-tab {
+    margin-right: 20px !important;
+    margin-top: -18px;
+    border-bottom: 3px solid transparent !important;
+}
+
+.header-tab h3 {
+    font-size: 27px;
+    margin-left: 8px;
+}
+
+.nav-tabs-custom.box-tabs .nav-tabs li.header-tab:hover {
+    border-bottom: 3px solid transparent !important;
+}
+
+.nav-tabs-custom.box-tabs .nav-tabs li.header-tab.active {
+    border-bottom: 3px solid transparent !important;
+}
+
+.box-tabs-content .tab-content .tab-pane {
+    margin-top: -22px;
+    padding-top: 15px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-bottom: 5px;
+}
+
+.nav-tabs-custom.box-tabs .nav-tabs {
+    margin: 0;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+}
+
+.nav-filter-button {
+    background-color: transparent;
+    margin-top: 5px;
+}
+
+.nav-filter-button:active {
+  box-shadow: none;
+}
+
+.box-tabs-content {
+    transition: all 1s ease-in;
+}
+
+#search_results {
+    margin-top: 20px;
+    display: none;
+}
+
+.tabbed-box .overlay,
+.overlay-wrapper .overlay {
+    z-index: 50;
+    background: rgba(255,255,255,0.7);
+    border-radius: 3px;
+}
+
+.tabbed-box .overlay,
+.tabbed-box .loading-img,
+.overlay-wrapper .overlay,
+.overlay-wrapper .loading-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#search-loading {
+    margin-left: 15px;
+    width: calc(100% - 30px);
+}
+
+.tabbed-box .overlay i {
+    font-size: 60px;
+    left: 50%;
+    top: calc(50% - 30px);
+    position: absolute;
+}
+
+.tabbed-box .box-footer label {
+    font-weight: 400;
+    font-size: 14px;
+    padding-top: 12px;
+    padding-left: 7px;
+    margin-top: -3px;
+}
+
+.modal label.info {
+    float: left;
+    font-weight: 500;
+    margin-top: 5px;
+}
+
+#remove-all-toggle-btn {
+    margin: 0;
+}
+
+#remove-all-toggle-btn .checkbox-button-box {
+    height: auto;
+}

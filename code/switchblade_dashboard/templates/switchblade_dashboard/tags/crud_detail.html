@@ -1,0 +1,137 @@
+{% load dashboard_tag %}
+{% load static %}
+{% load i18n %}
+
+<div class="box box-default">
+    <div class="box-header with-border">
+        <h3 class="box-title">{{ data.Header }}</h3>
+    </div>
+    <div class="box-body">
+        <div class="row">
+            <div class="col-sm-12">
+
+                {% if data.RowsBefore %}
+                    {% for k,v in data.RowsBefore.items %}
+                        <div class="row pad">
+                            <div class="col-sm-2">
+                                <b>{{ k }}:</b>
+                            </div>
+                            <div class="col-sm-10">
+                                {{ data.Object|get_attribute:v }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                {% if data.RowsBasedOnForm %}
+                    {% for field in data.RowsBasedOnForm %}
+                        <div class="row pad">
+                            <div class="col-sm-2">
+                                <b>{{ field.label }}:</b>
+                            </div>
+                            <div class="col-sm-10">
+                                {{ data.Object|get_attribute:field.name }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                {% if data.RowsSet %}
+                    {% for legend, fields in data.RowsSet.items %}
+                        <div class="row pad">
+                            <div class="col-sm-12">
+                                <legend>{{ legend }}</legend>
+                            </div>
+                        </div>
+                        {% for k,v in fields.items %}
+                            <div class="row pad">
+                                <div class="col-sm-2">
+                                    <b>{{ k }}:</b>
+                                </div>
+                                <div class="col-sm-10">
+                                    {{ data.Object|get_attribute:v }}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                {% endif %}
+
+                {% if data.RowsAfter %}
+                    {% for k,v in data.RowsAfter.items %}
+                        <div class="row pad">
+                            <div class="col-sm-2">
+                                <b>{{ k }}:</b>
+                            </div>
+                            <div class="col-sm-10">
+                                {{ data.Object|get_attribute:v }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="box-footer">
+        {% if data.ButtonBack %}
+            <a href="javascript:history.back();" class="btn btn-default">{% trans "Back" %}</a>
+        {% endif %}
+        <div class="btn-group pull-right">
+            {% if data.ButtonUpdate and data.Object.get_update_url %}
+                <a href="{{ data.Object.get_update_url }}{% if data.query_string %}?{{ data.query_string }}{% endif %}" class="btn btn-warning">
+                    {% trans "Update" %}
+                </a>
+            {% endif %}
+            {% if data.ButtonDelete and data.Object.get_delete_url %}
+                <button data-toggle="modal"
+                    data-target="#deleteModalDetail"
+                    data-obj="{{ data.Object }}"
+                    data-action="{{ data.Object.get_delete_url }}{% if data.query_string %}?{{ data.query_string }}{% endif %}"
+                    class="btn btn-danger">{% trans "Delete" %}</button>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% if data.ButtonDelete and data.Object.get_delete_url %}
+    <div class="modal modal-danger" id="deleteModalDetail" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Delete</h4>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        {% trans 'Do you want to delete' %} <b><span id="modal-obj"></span></b>?
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-default pull-left" data-dismiss="modal">
+                        Cancel
+                    </a>
+                    <form method="post" action="" id="deleteForm">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-outline">
+                            Delete
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    $(document).ready(function() {
+        $('#deleteModalDetail').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var obj = button.data('obj');
+            var action = button.data('action');
+            var modal = $(this);
+            modal.find('#modal-obj').text(obj);
+            modal.find('#deleteForm').attr("action", action);
+        })
+    });
+</script>
+{% endif %}

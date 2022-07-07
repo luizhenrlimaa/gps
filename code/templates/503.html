@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% load i18n %}
+<html lang='en' class=''>
+<head>
+    <title>Maintenance Mode</title>
+    <style class="cp-pen-styles">body {
+        background: #e9e688; /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #158295, #e9e688); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #158295, #e9e688); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+
+    .box {
+        margin-top: 8%;
+        margin-left: 15%;
+    }
+
+
+    .text-500 {
+        color: #f2f2f2;
+    }
+
+    .head {
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: 400;
+        font-size: 60px;
+        margin-bottom: 0;
+    }
+
+    a {
+        color: #ffffff;
+        text-decoration-line: none;
+        font-weight: bold;
+    }
+
+    a:hover {
+        color: #ffffff;
+        text-decoration-line: underline;
+    }
+
+    .sub {
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: 100;
+        font-size: 20px;
+        color: #eaeaea;
+    }
+
+    .sublow {
+        font-family: 'Raleway', sans-serif;
+        font-size: 13px;
+    }</style>
+</head>
+<body>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900|Ubuntu:300,400,500,700"
+          rel="stylesheet">
+</head>
+<div class="box">
+    <br><br>
+    <div class="text-500">
+        <h2 class="head">{% trans MAINTENANCE MODE (503) %}</h2>
+        <h4 class="sub">{% trans We are updating the system. Please, try again later. %}</h4>
+        <p class="sublow">{% trans "Feel free to " %} <a href="https://jira.inatel.br/jira/servicedesk/customer/portal/12" target="_blank">{% trans "contact us " %}</a> {% trans "if the problems persists." %}
+        </p>
+    </div>
+</div>
+
+</body>
+</html>

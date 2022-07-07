@@ -1,0 +1,30 @@
+{% extends "switchblade_dashboard/base.html" %}
+{% load dashboard_tag %}
+{% load staticfiles %}
+
+{% block extraHead %}
+    <link rel="stylesheet" href="{% static 'switchblade_dashboard/css/async_report.css' %}">
+{% endblock %}
+
+{% block content_main %}
+    {% csrf_token %}
+    {% if is_running_celery %}
+        <i class="celery__icon"></i>
+        <div class="box celery">
+            <div class="celery__message"></div>
+            <button class="btn btn-default celery__button" style="display: none;" onclick="revokeReport()">
+                <i class="fa fa-times-circle"></i>
+                Cancel report generation
+            </button>
+        </div>
+        <div id="celery-task"></div>
+    {% else %}
+        {% report_smart list_data table_data chart_data %}
+    {% endif %}
+{% endblock content_main %}
+
+{% block extraJS %}
+    <script src="{% static 'switchblade_dashboard/js/promise_utils.js' %}"></script>
+    <script src="{% static 'switchblade_dashboard/js/async_report.js' %}"></script>
+    <script>document.addEventListener("DOMContentLoaded", () => { celeryTaskId = '{{ task_id }}'; });</script>
+{% endblock extraJS %}

@@ -1,0 +1,141 @@
+{% extends "switchblade_dashboard/base.html" %}
+{% load dashboard_tag %}
+{% load static %}
+
+
+{% block content_main %}
+
+<link href="{% static 'registros/css/timeline.css' %}" rel="stylesheet">
+
+<div class="timeline_custom">
+  {% if sub.status <= 1 %}
+  <div class="container_custom left_custom">
+    <div class="date_custom">{{submetido_data}}</div>
+    <i class="icon_custom fa fa-check"></i>
+    <div class="content_custom">
+      <h2>Submetido</h2>
+      <p>
+        Sua requisição foi submetida! Logo a secretaria fará a análise.
+      </p>
+    </div>
+  </div>
+  {%endif%}
+    {% if sub.status == 2 %}
+
+    <div class="container_custom left_custom">
+    <div class="date_custom">{{submetido_data}}</div>
+    <i class="icon_custom fa fa-circle-o-notch"></i>
+    <div class="content_custom">
+      <h2>Submetido</h2>
+      <p>
+        Sua requisição foi submetida! Logo a secretaria fará a análise.
+      </p>
+    </div>
+  </div>
+
+  <div class="container_custom right_custom">
+    <div class="date_custom">{{em_analise_data}}</div>
+    <i class="icon_custom fa fa-circle-o-notch "></i>
+    <div class="content_custom">
+      <h2>Em Analise</h2>
+      <p>
+        A secretaria iniciou o processo de análise da sua requisição, logo você terá o resultado.
+      </p>
+    </div>
+  </div>
+  {%endif%}
+  {% if sub.status == 3 %}
+
+      <div class="container_custom left_custom">
+    <div class="date_custom">{{submetido_data}}</div>
+    <i class="icon_custom fa fa-check"></i>
+    <div class="content_custom">
+      <h2>Submetido</h2>
+      <p>
+        Sua requisição foi submetida! Logo a secretaria fará a análise.
+      </p>
+    </div>
+  </div>
+
+  <div class="container_custom right_custom">
+    <div class="date_custom">{{em_analise_data}}</div>
+    <i class="icon_custom fa fa-circle-o-notch"></i>
+    <div class="content_custom">
+      <h2>Em Analise</h2>
+      <p>
+        A secretaria iniciou o processo de análise da sua requisição, logo você terá o resultado.
+      </p>
+    </div>
+  </div>
+
+  <div class="container_custom right_custom">
+    <div class="date_custom">{{final}}</div>
+    <i class="icon_custom fa fa-check-circle"></i>
+    <div class="content_custom">
+      <h2>Aprovado</h2>
+      <p>
+        A secretaria aprovou sua requisição! Em breve as horas das suas AC's serão registradas no e-campus.
+      </p>
+    </div>
+  </div>
+  {%endif%}
+  {% if sub.status == 4 %}
+  <div class="container_custom left_custom">
+    <div class="date_custom">{{submetido_data}}</div>
+    <i class="icon_custom fa fa-check"></i>
+    <div class="content_custom">
+      <h2>Submetido</h2>
+      <p>
+        Sua requisição foi submetida! Logo a secretaria fará a análise.
+      </p>
+    </div>
+  </div>
+
+  <div class="container_custom right_custom">
+    <div class="date_custom">{{em_analise_data}}</div>
+    <i class="icon_custom fa fa-circle-o-notch"></i>
+    <div class="content_custom">
+      <h2>Em Analise</h2>
+      <p>
+        A secretaria iniciou o processo de análise da sua requisição, logo você terá o resultado.
+      </p>
+    </div>
+  </div>
+
+  <div class="container_custom right_custom">
+    <div class="date_custom">{{final}}</div>
+    <i class="icon_custom fa fa-close"></i>
+    <div class="content_custom">
+      <h2>Reprovado</h2>
+      <p>
+        <a href="{%url 'vizualizar-erros' sub.pk%}">Clique Aqui</a> para vizualizar quais certificados foram indeferidos.
+      </p>
+    </div>
+  </div>
+  {%endif%}
+</div>
+
+
+{% endblock content_main %}
+
+{% block title %}
+    {{ form_data.PageTitle }}
+{% endblock %}
+
+{% block content_title %}
+    {{ form_data.PageTitle }}
+{% endblock %}
+
+{% block extraJS %}
+    <script src="{% static 'registros/js/form.js' %}"></script>
+
+     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
+       <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+       <script src="{% static 'js/app.js' %}"></script>
+{% endblock extraJS %}

@@ -1,0 +1,516 @@
+.badge, .bg-red, .bg-yellow, .bg-aqua, .bg-blue, .bg-light-blue, .bg-green, .bg-navy, .bg-teal, .bg-olive, .bg-lime, .bg-orange,
+.bg-fuchsia, .bg-purple, .bg-maroon, .bg-black, .bg-red-active, .bg-yellow-active, .bg-aqua-active, .bg-blue-active,
+.bg-light-blue-active, .bg-green-active, .bg-navy-active, .bg-teal-active, .bg-olive-active, .bg-lime-active,
+.bg-orange-active, .bg-fuchsia-active, .bg-purple-active, .bg-maroon-active, .bg-black-active, .callout.callout-danger,
+.callout.callout-warning, .callout.callout-info, .callout.callout-success, .alert-success, .alert-danger, .alert-error,
+.alert-warning, .alert-info, .label-danger, .label-info, .label-warning, .label-primary, .label-success,
+.modal-primary .modal-body, .modal-primary .modal-header, .modal-primary .modal-footer, .modal-warning .modal-body,
+.modal-warning .modal-header, .modal-warning .modal-footer, .modal-info .modal-body, .modal-info .modal-header,
+.modal-info .modal-footer, .modal-success .modal-body, .modal-success .modal-header, .modal-success .modal-footer,
+.modal-danger .modal-body, .modal-danger .modal-header, .modal-danger .modal-footer {
+    color: #071038 !important;
+}
+
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7,
+.col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5,
+.col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3,
+.col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12,
+.col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.no-padding {
+    padding: 0px !important;
+}
+
+.padding-right {
+    padding-right: 10px !important;
+}
+
+.padding-left {
+    padding-left: 10px !important;
+}
+
+.content-wrapper {
+    overflow: hidden;
+    background: #050D2F !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #526783;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #0054C5;
+}
+
+::-webkit-scrollbar-track {
+    background: #4F4E6FB0;
+}
+
+input {
+    height: 30px;
+}
+
+.form-group input, .input-group .input-group-addon, .form-group .form-control {
+    background: #494F69;
+    border-color: #082040;
+    color: #C2C3CD;
+}
+
+button {
+    color: #C2C3CD;
+}
+
+.btn.btn-success {
+    border-color: #171B43;
+    background-color: #2B3B7C !important;
+}
+
+.selected-item {
+    background-color: #2B3B7C;
+    border: 1px solid #272F53;
+}
+
+.modal {
+    cursor: default;
+}
+
+.modal-content {
+    box-shadow: 1px 0px 8px 5px rgba(42, 0, 255, 0.05);
+}
+
+.modal-dialog {
+    width: 600px;
+}
+
+.modal-body {
+    padding: 15px;
+    overflow-y: auto;
+    max-height: 600px;
+}
+
+.modal-backdrop {
+    background-color: #123CB9;
+}
+
+.modal-backdrop.in {
+    opacity: 0.1;
+}
+
+.modal-footer {
+    padding: 15px;
+}
+
+datalist {
+    color: #C2C3CD;
+    background: #262B40;
+}
+
+.modal-header {
+    color: #C2C3CD;
+    background: #2B3B7C;
+    border-bottom: 1px solid #091D38;
+}
+
+.bg-modal-wrapper {
+    background-color: #050D2F;
+}
+
+.box-body {
+    position: relative;
+    border-radius: 3px;
+    background: #071038;
+    color: #C2C3CD;
+    border-top: 2px solid #091D38;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 1px #3D4B8B3D;
+}
+
+.modal-footer {
+    background: #071038;
+    border-top: 1px solid #091D38;
+}
+
+.box {
+    margin-bottom: 10px !important;
+    border-top-color: #00103C;
+    background: #071038;
+    color: #C2C3CD;
+    box-shadow: 0 1px 1px #3D4B8B3D;
+}
+
+.select2-selection.select2-selection--multiple, .select2-selection.select2-selection--single {
+    outline: none;
+    background: #494F69 !important;
+    border-color: #071038 !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #d6d1d1 !important;
+    line-height: 28px;
+}
+
+.select2-selection__choice {
+    color: #FFF !important;
+}
+
+.select2-search__field {
+    padding-left: 2px;
+    padding-bottom: 8px !important;
+}
+
+.dashboard-title {
+    height: 5.5vh;
+    font-size: 4vh;
+    font-weight: 600;
+    text-align: center;
+}
+
+.dashboard-sub-title {
+    padding: 0;
+    font-size: 24px;
+    font-weight: 900;
+    text-align: center;
+}
+
+.dashboard-sub-title .box {
+    padding: 0;
+    color: #C2C3CD;
+    padding-bottom: 6px;
+}
+
+.logo-lg {
+    position: absolute;
+    left: -10px;
+    top: -3px;
+}
+
+.logo-lg img {
+    cursor: pointer !important;
+}
+
+.dashboard-btns select {
+    margin-top: 6px;
+}
+
+.dashboard-btns .dashboard-title .checkbox-button-box {
+    float: none;
+}
+
+input:checked + .slider {
+    background-color: #2b3b7c;
+}
+
+.dashboard-btns .description {
+    margin-top: 13px;
+}
+
+.dashboard-btns .checkbox-button-box {
+    float: none;
+    margin-top: 13px;
+}
+
+.dashboard-btns label {
+    float: right;
+    white-space: nowrap;
+}
+
+.sync-time {
+    height: 25px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 90;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    font-size: 11px;
+    opacity: 0;
+}
+
+.sync-time:hover {
+    color: #FFF;
+}
+
+.sync-time i {
+    margin-right: 3px;
+}
+
+#previous-page, #next-page {
+    width: 8.5vh;
+    top: 7vh;
+    z-index: 9999;
+    background: #0000001F;
+    height: 92vh;
+    position: absolute;
+    outline: none;
+    display: none;
+}
+
+#previous-page {
+    left: 0px;
+}
+
+#next-page {
+    right: 0px;
+}
+
+#next-page.visible, #previous-page.visible {
+    cursor: pointer;
+    display: block;
+}
+
+#next-page.visible:hover, #previous-page.visible:hover {
+    background: 00000030;
+}
+
+#previous-page button, #next-page button {
+    height: 90vh;
+    width: 2vh;
+    background: transparent;
+    outline: none;
+    border: 0;
+}
+
+#previous-page button i, #next-page button i {
+    font-size: 11vh;
+    color: #C2C3CD;
+}
+
+#next-page.visible:hover i, #previous-page.visible:hover i {
+    color: #FFF;
+}
+
+#detail-data-modal .modal-header {
+    color: #C2C3CD;
+    background: #212e53;
+}
+
+#detail-data-modal th {
+    text-transform: capitalize;
+    text-align: center !important;
+    padding-bottom: 15px !important;
+}
+
+#detail-data-modal .modal-dialog {
+    width: calc(100% - 159px);
+}
+
+#detail-data-modal tbody {
+    display: block;
+    max-height: 416px;
+    overflow-y: overlay;
+}
+
+#detail-data-modal td {
+    overflow: hidden;
+}
+
+#detail-data-modal thead tr {
+    height: 50px;
+    font-size: 15px;
+    vertical-align: inherit;
+}
+
+#detail-data-modal thead, #detail-data-modal tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+#detail-data-modal tr:hover .task-name {
+    font-weight: 900;
+    font-size: 15px;
+}
+
+#detail-data-modal table {
+    width: 100%;
+    border-color: #717171;
+}
+
+#detail-data-modal table .btn.btn-default {
+    margin-top: 0;
+}
+
+#detail-data-modal .task-name {
+    cursor: default;
+    padding-top: 5px;
+    padding-left: 0;
+    font-size: 13px;
+}
+
+#detail-data-modal .table-image {
+    padding: 0;
+}
+
+#detail-data-modal .table-image:hover {
+    cursor: default;
+}
+
+#detail-data-modal th {
+    background: #212E53;
+}
+
+#detail-data-modal td {
+    background: #222E3E5E;
+}
+
+#detail-data-modal .table-hover tbody tr:hover {
+    background-color: #b9b0e9;
+}
+
+.selected-items-container.col-sm-12 {
+    padding: 0;
+}
+
+.workscope-id {
+    margin-top: 0;
+    background-color: #332583;
+    color: #071038;
+    border-color: #2C2262;
+}
+
+tr:hover .workscope-id {
+    background-color: #654Cf3;
+    border-color: #342781;
+}
+
+.workscope-id:hover {
+    background-color: #7F69FF;
+    border-color: #5E50B0;
+}
+
+.workscope-id:hover, .workscope-id:active, .workscope-id:focus, .workscope-id.hover {
+    background-color: #7F69FF !important;
+}
+
+.workscope-id a {
+    color: #C2C3CD !important;
+    font-weight: 900;
+    font-size: 13px;
+}
+
+.workscope-id:hover a {
+    color: #FFF !important;
+}
+
+#detail-data-modal .box-body {
+    margin-bottom: 0;
+}
+
+#detail-data-modal th, #detail-data-modal td {
+    border-color: #49486E;
+    color: #C2C3CD;
+}
+
+#detail-data-modal .btn.btn-success {
+    border-color: #171B43;
+    background-color: #212e53 !important;
+    color: #C6C6C6;
+    padding: 10px 18px;
+}
+
+#detail-data-modal .table .btn.btn-success {
+    height: 32px;
+    padding: 6px 0px 0px 39px;
+}
+
+#detail-data-modal .btn.btn-success i {
+    margin-right: 4px;
+    font-size: 13px;
+}
+
+#detail-data-modal span, #detail-data-modal td, #detail-data-modal a {
+    color: #C2C3CD;
+    overflow: hidden;
+}
+
+#detail-data-modal tr:hover span, #detail-data-modal tr:hover td, #detail-data-modal tr:hover a {
+    color: #FFF;
+}
+
+#detail-data-modal tbody::-webkit-scrollbar-thumb {
+    background: #526783;
+}
+
+#detail-data-modal tbody::-webkit-scrollbar-thumb:hover {
+    background: #0054C5;
+}
+
+#detail-data-modal tbody::-webkit-scrollbar-track {
+    background: #4F4E6FB0;
+}
+
+.box .overlay, .overlay-wrapper .overlay {
+    background: rgba(47, 44, 69, 0.7);
+}
+
+.box .overlay>.fa, .overlay-wrapper .overlay>.fa {
+    color: #dfdfdf;
+    font-size: 100px;
+}
+
+.action-btn {
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 15px;
+}
+
+.btn-default.white-icon {
+    color: #666 !important;
+}
+
+.btn-default.white-icon:hover {
+    color: #444 !important;
+}
+
+#detail-data-modal tr:hover .btn-default.white-icon {
+    color: #444 !important;
+    background-color: #c7c7c7;
+}
+
+.btn-default.white-icon:hover {
+    color: #444 !important;
+    background-color: #c7c7c7;
+}
+
+.workscope-status.btn-social > :first-child {
+    width: 30px;
+}
+
+#filters-modal .box-body {
+    position: relative;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+#filters-modal .modal-footer {
+    padding: 10px;
+}
+
+.dashboard-title {
+    height: 5vh;
+    font-size: 3.5vh;
+    font-weight: 600;
+}
+
+.btn-filters button {
+    position: absolute;
+    right: 0;
+    top: 5px;
+    z-index: 9999;
+}
+
+#dashboard-overall-data-manager {
+    padding: 10px;
+}
+
+.chart-extra-content {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}

@@ -1,0 +1,161 @@
+version: '3.5'
+
+services:
+
+  postgres:
+    image: mdillon/postgis
+    container_name: proj-postgres-server-cargou
+    environment:
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: proj_db
+    ports:
+      - "5434:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - web
+      - database
+
+#  redis:
+#    image: redis:latest
+#    container_name: proj-redis-server
+#    expose:
+#      - 6379
+#    networks:
+#      - web
+#      - database
+#
+#  celery:
+#    build: .
+#    container_name: proj-celery-server
+#    entrypoint: ['sh', '/code/run-celery.sh']
+#    environment:
+#      - WORKER_GROUP_NAME=CeleryWorker
+#      - CONCURRENCY=4
+#      - MEMORY_LIMIT=781250
+#      - QUEUES=default
+#    volumes:
+#      - ./code:/code
+#    depends_on:
+#      - postgres
+#      - redis
+#    networks:
+#      - web
+#      - database
+#
+#  celery-beat:
+#    build: .
+#    container_name: proj-celery-beat-server
+#    entrypoint: ['sh', '/code/run-celery-beat.sh']
+#    volumes:
+#      - ./code:/code
+#    depends_on:
+#      - celery
+#    networks:
+#      - web
+#      - database
+#
+#  flower:
+#    build: .
+#    container_name: proj-flower-server
+#    entrypoint: ['sh', '/code/run-flower.sh']
+#    volumes:
+#      - ./code:/code
+#    depends_on:
+#      - celery
+#    ports:
+#      - "5555:5555"
+#    networks:
+#      - web
+#      - database
+
+#  adminer:
+#    image: adminer:latest
+#    container_name: proj-adminer-server
+#    ports:
+#      - "8080:8080"
+#    depends_on:
+#      - postgres
+#    networks:
+#      - database
+#
+#  portainer:
+#    image: portainer/portainer:latest
+#    container_name: proj-portainer-server
+#    ports:
+#      - "9000:9000"
+#    command: -H unix:///var/run/docker.sock
+#    volumes:
+#      - /var/run/docker.sock:/var/run/docker.sock
+#      - portainer-data:/data
+
+#  selenium-hub:
+#    image: cidc.local/selenium-hub:latest
+#    container_name: selenium-hub
+#    ports:
+#      - "4444:4444"
+#      - "5556:4444"
+#    networks:
+#      - web
+#    deploy:
+#      restart_policy:
+#        condition: any
+#      replicas: 1
+#      placement:
+#        constraints: [node.hostname == saoperpdoc00007]
+#
+#  selenium-chrome_s1:
+#    image: cidc.local/selenium-chrome:latest
+#    container_name: selenium-chrome-s1
+#    entrypoint: bash -c 'SE_OPTS="-host $$HOSTNAME" /opt/bin/entry_point.sh'
+#    depends_on:
+#      - selenium-hub
+#    environment:
+#      - HUB_HOST=selenium-hub
+#      - HUB_PORT=4444
+#      - NODE_MAX_INSTANCES=4
+#      - NODE_MAX_SESSION=4
+#      - NODE_APPLICATION_NAME=chrome-node
+#    volumes:
+#      - ./code/media/selenium_downloads:/home/seluser/Downloads
+#      - /dev/shm:/dev/shm
+#    deploy:
+#      restart_policy:
+#        condition: any
+#      replicas: 1
+#      placement:
+#        constraints: [node.hostname == saoperpdoc00004]
+#    networks:
+#      - web
+#
+#  selenium-chrome-debug:
+#    image: cidc.local/selenium-chrome-debug:latest
+#    container_name: selenium-chrome-debug
+#    entrypoint: bash -c 'SE_OPTS="-host $$HOSTNAME" /opt/bin/entry_point.sh'
+#    depends_on:
+#      - selenium-hub
+#    ports:
+#      - "5557:5900"
+#    environment:
+#      - HUB_HOST=selenium-hub
+#      - HUB_PORT=4444
+#      - NODE_APPLICATION_NAME=chrome-node-debug
+#    volumes:
+#      - ./code/media/selenium_downloads:/home/seluser/Downloads
+#      - /dev/shm:/dev/shm
+#    deploy:
+#      restart_policy:
+#        condition: any
+#      replicas: 1
+#      placement:
+#        constraints: [node.hostname == saoperpdoc00002]
+#    networks:
+#      - web
+
+volumes:
+  portainer-data:
+  postgres-data:
+
+networks:
+  web:
+  database:

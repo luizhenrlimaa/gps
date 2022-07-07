@@ -1,0 +1,22 @@
+:root {
+    --main-bg-color: #fff;
+    --main-color: #000;
+
+    --nav-bg-color: #ECF0F5;
+    --nav-color: #000;
+
+    --box-bg-color: #ECF0F5;
+    --box-color: #000;
+
+    --filter-bg-color: #fff;
+    --filter-button-bg-color: #008d4c;
+    --filter-button-border-color: #398439;
+    --filter-button-hover-bg-color: #449d44;
+    --filter-button-hover-border-color: #398439;
+
+    --slider-bg-color: var(--success-color);
+
+    --form-group-bg-color: #fff;
+    --form-group-color: #555;
+    --form-group-border-color: #d2d6de;
+}

@@ -1,0 +1,85 @@
+{% extends "switchblade_dashboard/base.html" %}
+{% load dashboard_tag %}
+{% load static %}
+
+
+{% block content_main %}
+
+
+    <div class="box box-default">
+    <div class="box-header with-border">
+        <h3 class="box-title"></h3>
+    </div>
+    <div class="box-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="tab-content">
+                        <div class="col-md-12">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">Certificados Indeferidos</h3>
+                                </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                        <table id="table-vinculo" class="table table-bordered table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th>Titulo</th>
+                                            <th>Categoria</th>
+                                            <th>Atividade</th>
+                                            <th>Nível de Participação</th>
+                                            <th>Toltal de Horas</th>
+                                            <th>Horas Convertidas</th>
+                                            <th>Observação</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {%for c in resp%}
+                                            <tr>
+                                                <td>{{c.certificado.titulo}}</td>
+                                                <td>{{c.certificado.categoria}}</td>
+                                                <td>{{c.certificado.atividade}}</td>
+                                                <td>{{c.certificado.nivel_participacao}}</td>
+                                                <td>{{c.certificado.total_de_horas}}</td>
+                                                <td>{{c.certificado.horas_convertidas}}</td>
+                                                <td>{{c.observacao}}<td>
+                                            </tr>
+                                        {%endfor%}
+                                        </tbody>
+                                      </table>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock content_main %}
+
+{% block title %}
+    {{ form_data.PageTitle }}
+{% endblock %}
+
+{% block content_title %}
+    {{ form_data.PageTitle }}
+{% endblock %}
+
+{% block extraJS %}
+    <script src="{% static 'registros/js/form.js' %}"></script>
+
+     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
+       <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+       <script src="{% static 'js/app.js' %}"></script>
+{% endblock extraJS %}

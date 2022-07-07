@@ -1,0 +1,21 @@
+
+  - name: Create images directory
+    file:
+      path: "{{ image_temp_path }}"
+      state: directory
+      mode: 0770
+
+  - name: Delete existing images
+    file:
+      path: "images/{{ item.replace('/', '-').replace(':', '-') }}.tar.gz"
+      state: absent
+    with_items:
+      - "{{ images }}"
+
+  - name: Copy images to remote server
+    copy:
+      src: "images/{{ item.replace('/', '-').replace(':', '-') }}.tar.gz"
+      dest: "{{ image_temp_path }}"
+      mode: 0770
+    with_items:
+      - "{{ images }}"

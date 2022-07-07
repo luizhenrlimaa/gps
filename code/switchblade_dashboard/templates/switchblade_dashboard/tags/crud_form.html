@@ -1,0 +1,125 @@
+{% load dashboard_tag %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+
+<form method="{{ data.Method|default:'POST' }}" action="{{ data.Buttons.Submit.1|default:"" }}" enctype="multipart/form-data">
+    <div class="box box-default">
+        <div class="box-header with-border">
+            <h3 class="box-title">{{ data.Header }}</h3>
+        </div>
+        <div class="box-body">
+            <div class="form-horizontal">
+                {% if 'FormHelper' in data %}
+                    {% crispy data.Form data.FormHelper %}
+                {% else %}
+                    {% crispy data.Form %}
+                {% endif %}
+            </div>
+        </div>
+        {% if not data.Inlines %}
+            <div class="box-footer">
+                {% if data.ButtonBack %}
+                    <a href="javascript:history.back();" class="btn btn-default">
+                        {% trans "Back" %}
+                    </a>
+                {% endif %}
+                <div class="btn-group pull-right">
+                    <button type="submit" class="btn bg-green">
+                        {% trans "Save" %}
+                    </button>
+                    {% if data.ButtonSaveAdd %}
+                        <button type="submit" class="btn bg-light-blue" name="btn_save_add"
+                                value="{{ data.ButtonSaveAddUrl }}{% if data.query_string %}?{{ data.query_string }}{% endif %}">
+                            {% trans "Save and add new" %}
+                        </button>
+                    {% endif %}
+                    {% if data.ButtonSaveContinue %}
+                        <button type="submit" class="btn bg-teal" name="btn_save_continue" value="btn_save_continue">
+                            {% trans "Save and continue" %}
+                        </button>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    {% for inline in data.Inlines %}
+        <div class="box box-default">
+            <div class="box-header with-border">
+                <h3 class="box-title">{{ inline.0.title }}</h3>
+            </div>
+            <div class="box-body">
+                {% if inline.2.type == 'tabular' %}
+                    {% crispy inline.1 inline.2 %}
+                {% else %}
+                    <div id="extra-{{ inline.1.prefix }}">
+                        {{ inline.1.management_form|crispy }}
+                        <div class="hidden empty-form" id="empty-form-{{ inline.1.prefix }}">
+                            {% crispy inline.1.empty_form inline.2 %}
+                        </div>
+                        {% for form in inline.1 %}
+                            <div class="form-horizontal stripped">
+                                {% crispy form inline.2 %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    {% if inline.1.max_num > 1 %}
+                        <button type="button" class="btn btn-xs btn-default" style="margin: 5px;" id="add_more_{{ inline.1.prefix }}">
+                            <i class="fa fa-plus-circle"></i>
+                             {% trans 'Add more'%}
+                        </button>
+                    {% endif %}
+                    <script>
+                        var form_count_{{ inline.1.prefix }} = {{ inline.1.total_form_count }};
+
+                        $('#add_more_{{ inline.1.prefix }}').click(function () {
+                            var row = document.getElementById("empty-form-{{ inline.1.prefix }}").cloneNode(true);
+                            row.removeAttribute("id");
+                            row.removeAttribute("class");
+                            row.setAttribute("class", "form-horizontal stripped");
+                            let summernotes = row.querySelectorAll('.note-editor.note-frame.panel.panel-default');
+
+                            if (summernotes && summernotes.length > 0) {
+                                summernotes.forEach((summernote) => summernote.remove());
+                            }
+
+                            var form = row.outerHTML.replace(/__prefix__/g, form_count_{{ inline.1.prefix }});
+                            $('#extra-{{ inline.1.prefix }}').append(form);
+                            form_count_{{ inline.1.prefix }}++;
+                            $('#id_{{ inline.1.prefix }}-TOTAL_FORMS').val(form_count_{{ inline.1.prefix }});
+                        });
+                    </script>
+                {% endif %}
+                {{ inline.1.media }}
+            </div>
+            {% if forloop.last %}
+                <div class="box-footer">
+                    {% if data.ButtonBack %}
+                        <a href="javascript:history.back();" class="btn btn-default">
+                            {% trans "Back" %}
+                        </a>
+                    {% endif %}
+                    <div class="btn-group pull-right">
+                        <button type="submit" class="btn bg-green">
+                            {% trans "Save" %}
+                        </button>
+                        {% if data.ButtonSaveAdd %}
+                            <button type="submit" class="btn bg-light-blue" name="btn_save_add"
+                                    value="{{ data.ButtonSaveAddUrl }}{% if data.query_string %}?{{ data.query_string }}{% endif %}">
+                                {% trans "Save and add new" %}
+                            </button>
+                        {% endif %}
+                        {% if data.ButtonSaveContinue %}
+                            <button type="submit" class="btn bg-teal" name="btn_save_continue" value="btn_save_continue">
+                                {% trans "Save and continue" %}
+                            </button>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    {% endfor %}
+</form>
+

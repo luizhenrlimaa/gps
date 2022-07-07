@@ -1,0 +1,19 @@
+
+  - name: Create images folder
+    file:
+      path: images
+      state: directory
+      mode: 0775
+
+  - name: Save docker images as .tar (The image list is in hosts/environment)
+    command: "docker save {{ item }} -o images/{{ item.replace('/', '-').replace(':', '-') }}.tar"
+    with_items:
+      - "{{ images }}"
+
+  - name: Compact images to .gz
+    archive:
+      path: "images/{{ item.replace('/', '-').replace(':', '-') }}.tar"
+      dest: "images/{{ item.replace('/', '-').replace(':', '-') }}.tar.gz"
+      remove: true
+    with_items:
+      - "{{ images }}"

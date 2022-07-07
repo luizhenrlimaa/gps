@@ -1,0 +1,146 @@
+{% extends "switchblade_dashboard/base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block extraHead %}
+    <link rel="stylesheet" type="text/css" href="{% static 'switchblade_dashboard/libs/leaflet/leaflet.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'switchblade_dashboard/libs/Leaflet-draw/leaflet-draw.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'switchblade_dashboard/libs/Leaflet-sidebar/leaflet-sidebar.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'switchblade_dashboard/libs/Leaflet-search/css/leaflet-search.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'switchblade_dashboard/libs/Leaflet-markercluster/MarkerCluster.Default.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'switchblade_dashboard/libs/Leaflet-markercluster/MarkerCluster.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'switchblade_dashboard/css/map.css' %}">
+    <script type="text/javascript" src="{% static 'switchblade_dashboard/libs/echarts-4.7.0/echarts-en.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'switchblade_dashboard/libs/echarts-4.7.0/echarts-en.common.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'switchblade_dashboard/libs/echarts-4.7.0/echarts-en.simple.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'switchblade_dashboard/libs/echarts-4.7.0/echarts.common.min.js' %}"></script>
+{% endblock %}
+
+{% block content_header %}{% endblock %}
+
+{% block content_main %}
+    <div id="map_container" class="split" style="overflow-y: hidden; overflow-x: hidden;">
+        <div class="form-horizontal box">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div id="sidebar" class="leaflet-sidebar collapsed" style="display: none;">
+                        <div class="leaflet-sidebar-tabs">
+                            <ul role="tablist">
+                                <li>
+                                    <a href="#home" role="tab">
+                                        <i class="fa fa-bars"></i>
+                                    </a>
+                                </li>
+                                <li class="disabled" style="color: #414141;">
+                                    <a href="#profile" id="toggledraw" role="tab">
+                                        <i class="glyphicon glyphicon-pencil"></i>
+                                    </a>
+                                </li>
+                                <li v-if="is_processing" class="disabled" style="color: #414141;">
+                                    <a id="toggledraw" role="tab">
+                                        <i class="fa fa-spin fa-spinner"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="leaflet-sidebar-content">
+                            <div class="leaflet-sidebar-pane" id="home">
+                                <h1 class="leaflet-sidebar-header">
+                                    {% trans "Options" %}
+                                    <span class="leaflet-sidebar-close">
+                                        <i class="fa fa-caret-right"></i>
+                                    </span>
+                                </h1>
+                                <div v-if="themes !== null" class="row" style="padding-top: 0.5em; padding-left: 0.5em;">
+                                    <h4>{% trans "Themes" %}</h4>
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <div id="themesArea" v-for="(theme_properties, theme_name) in themes">
+                                            <input v-if="currentTheme == theme_name" type="radio" name="themes" v-bind:id="theme_name" v-bind:value="theme_name" onclick="map_control.changeTheme(this);" checked>
+                                            <input v-else type="radio" name="themes" v-bind:id="theme_name" v-bind:value="theme_name" onclick="map_control.changeTheme(this);">
+                                            <label v-bind:for="theme_name" > [[ theme_properties.verbose_name ]] </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div v-if="filterForm" class="row" style="padding-top: 0.5em; padding-left: 0.5em;">
+                                    <h4>Filter</h4>
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <form action="" class="form-horizontal" id="formMapFilter">
+                                        <div v-html="filterForm"></div>
+                                            <div class="btn-group pull-right">
+                                                <button class="btn btn-default" v-on:click.stop.prevent="setMapFilters()">
+                                                    <i class="fa fa-file-excel-o"></i> Export
+                                                </button>
+                                                <button  class="btn btn-success" v-on:click.stop.prevent="setMapFilters()">
+                                                    <i class="fa fa-filter"></i> Apply filter
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="map">
+                    </div>
+                </div>
+            </div>
+            <div class="overlay" v-show="is_loading">
+                <i class="fa fa-refresh fa-spin"></i>
+            </div>
+        </div>
+    </div>
+    <div id="info_area_container" class="box box-default split">
+        <div class="box-body">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-9 col-sm-9 col-xs-9">
+                            <span id="detail-out">
+                                <div id="detail_title">
+                                    {% trans "Select a item to see information" %}
+                                </div>
+                            </span>
+                        </div>
+                        <div class="col-md-3 col-sm-3 col-xs-3">
+                            <div style="float: right;">
+                                <a type="button" v-bind:onclick="info_area_icon_click" class="close">
+                                    <i id="info-area-icon" v-bind:class="info_area_icon"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body" id="detail_info" style="padding-top: 10px">
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extraJS %}
+    <script>
+        var csrf_token = '{{ csrf_token }}';
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            {% if default_theme %}
+                let defaultTheme = '{{ default_theme }}';
+            {% else %}
+                let defaultTheme = '';
+            {% endif %}
+
+            setTimeout(() => {
+                map_control.currentTheme = defaultTheme;
+            }, 500);
+        });
+    </script>
+
+    <script type="text/javascript" src="{% static 'switchblade_dashboard/libs/leaflet/leaflet.js' %}"></script>
+    <script type="text/javascript" src="{% static 'switchblade_dashboard/libs/Leaflet-draw/leaflet-draw.js' %}"></script>
+    <script type="text/javascript" src="{% static 'switchblade_dashboard/libs/Leaflet-sidebar/leaflet-sidebar.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'switchblade_dashboard/libs/Leaflet-search/js/leaflet-search.js' %}"></script>
+    <script type="text/javascript" src="{% static 'switchblade_dashboard/libs/Leaflet-markercluster/leaflet.markercluster.js' %}"></script>
+    <script type="text/javascript" src="{% static 'switchblade_dashboard/libs/splitjs/js/split.js' %}"></script>
+    <script src="{% static 'switchblade_dashboard/js/map.js' %}" ></script>
+    <script src="{% static 'switchblade_dashboard/vue_libs/map.js' %}" ></script>
+{% endblock extraJS %}

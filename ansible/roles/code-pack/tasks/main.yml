@@ -1,0 +1,55 @@
+
+#  - pause:
+#      prompt: "Enter git username "
+#      echo: yes
+#    register: gituser
+#
+#  - pause:
+#      prompt: "Enter git password "
+#      echo: no
+#    register: gitpassword
+
+  - name: Clear local temp repo
+    file:
+      path: "{{ local_temp_repo_path }}"
+      state: absent
+
+  - name: Remove code.tar.gz
+    file:
+      path: "code/code.tar.gz"
+      state: absent
+
+  - name: Create temp repo folder
+    file:
+      path: "{{ local_temp_repo_path }}"
+      state: directory
+      mode: 0775
+
+  - name: Clone project release in temp folder
+    git:
+      repo: "{{ local_repository }}"
+      dest: "{{ local_temp_repo_path }}"
+      version: "{{ release }}"
+
+  - name: Remove .git folder
+    file:
+      path: "{{ local_temp_repo_path }}/.git"
+      state: absent
+
+  - name: Remove bin folder
+    file:
+      path: "{{ local_temp_repo_path }}/bin"
+      state: absent
+
+  - name: Remove files template
+    file:
+      path: "{{ local_temp_repo_path }}/files-templates"
+      state: absent
+
+  - name: Remove ansible
+    file:
+      path: "{{ local_temp_repo_path }}/ansible"
+      state: absent
+
+  - name: Create code.tar.gz of code to upload
+    command: "tar -zcvf code/code.tar.gz -C {{ local_temp_repo_path }} ."

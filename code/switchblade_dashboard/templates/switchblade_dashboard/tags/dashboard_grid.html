@@ -1,0 +1,52 @@
+{% for row in page.rows %}
+    <div class="row" style="minHeight: {{ row.height }}">
+        {% for column in row.columns %}
+            <div class="grid-column col-sm-{{ column.width }} col-md-{{ column.width }} col-lg-{{ column.width }}">
+                {% for component in column.components %}
+                    {% if component.type == 'Chart' %}
+                        <v-chart
+                            :position="{'page': {{ page.index }}, 'row': {{ row.index }}, 'column': {{ column.index }}, 'component_index': {{ component.index }} }"
+                            :type="'{{ component.instance.get_component_name }}'"
+                            :id="'{{ component.instance.chart_id }}'"
+                            :title="'{{ component.instance.title }}'"
+                            :legend="{{ component.instance.legend }}"
+                            :export-option="{{ component.export_option|yesno:'true,false' }}"
+                            :custom-actions="{{ component.instance.custom_actions }}"
+                            :height="'{{ component.height }}'"
+                            :extra-options="{{ component.instance.extra_options  }}"
+                            :charts-theme-name="'{{ component.instance.charts_theme_name }}'"
+                        ></v-chart>
+                    {% elif component.type == 'Table' %}
+                        <v-data-table
+                            :position="{'page': {{ page.index }}, 'row': {{ row.index }}, 'column': {{ column.index }}, 'component_index': {{ component.index }} }"
+                            :id="'{{ component.instance.table_id }}'"
+                            :title="'{{ component.instance.title }}'"
+                            :entries="{{ component.instance.entries }}"
+                            :export-option="{{ component.export_option|yesno:'true,false' }}"
+                            :height="'{{ component.height }}'"
+                        ></v-data-table>
+                    {% elif component.type == 'Card' %}
+                        <v-card
+                            :position="{'page': {{ page.index }}, 'row': {{ row.index }}, 'column': {{ column.index }}, 'component_index': {{ component.index }} }"
+                            :type="'{{ component.instance.get_component_name }}'"
+                            :id="'{{ component.instance.card_id }}'"
+                            :title="'{{ component.instance.title }}'"
+                            :export-option="{{ component.export_option|yesno:'true,false' }}"
+                            :height="'{{ component.height }}'"
+                            :extra-options="{{ component.instance.extra_options }}"
+                        ></v-card>
+                    {% elif component.type == 'CustomHTML' %}
+                        <v-custom-html
+                            :position="{'page': {{ page.index }}, 'row': {{ row.index }}, 'column': {{ column.index }}, 'component_index': {{ component.index }} }"
+                            :type="'{{ component.instance.get_component_name }}'"
+                            :id="'{{ component.instance.component_id }}'"
+                            :title="'{{ component.instance.title }}'"
+                            :export-option="{{ component.export_option|yesno:'true,false' }}"
+                            :height="'{{ component.height }}'"
+                        ></v-custom-html>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+{% endfor %}

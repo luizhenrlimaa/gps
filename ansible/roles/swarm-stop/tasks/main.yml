@@ -1,0 +1,10 @@
+  - name: determine swarm status
+    shell: >
+      docker info | egrep '^Swarm: ' | cut -d ' ' -f2
+    register: swarm_status
+
+  - debug: var=swarm_status
+
+  - name: Remove a stack pnps and up the services
+    command: "docker stack rm {{ stack_name }}"
+    when: "'active' in swarm_status.stdout_lines"

@@ -1,0 +1,16 @@
+body {
+    background-size: cover;
+}
+
+.login-logo img {
+     width: 300px;
+}
+
+.login-box-body, .register-box-body {
+    box-shadow: 0px 0px 10px darkgrey;
+}
+
+#forgot-password-wrapper {
+    padding: 4px 0px 0px 9px;
+}
+

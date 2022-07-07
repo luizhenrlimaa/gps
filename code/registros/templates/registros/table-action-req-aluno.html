@@ -1,0 +1,31 @@
+{% load i18n %}
+{% load dashboard_tag %}
+
+{% if list_data.ButtonDetail or list_data.ButtonUpdate or list_data.ButtonDelete or list_data.ButtonExtra %}
+        <div class="btn-group-xs text-center text-nowrap">
+            {% if list_data.ButtonDetail and record.get_absolute_url and request.user|has_resource_permission:list_data.DetailResource %}
+                <a href="{% url 'submicao-aluno-detail' record.pk%}{% if request.META.QUERY_STRING %}?{{ request.META.QUERY_STRING }}{% endif %}" class="btn btn-info"><i
+                        class="fa fa-search" title="{% trans "View details" %}"></i></a>
+            {% endif %}
+            {% if list_data.ButtonUpdate and record.get_update_url and request.user|has_resource_permission:list_data.UpdateResource %}
+                <a href="{% url 'submicao-aluno-update' record.pk%}{% if request.META.QUERY_STRING %}?{{ request.META.QUERY_STRING }}{% endif %}" class="btn btn-warning"><i
+                        class="fa fa-pencil" title="{% trans "Atualizar" %}"></i></a>
+            {% endif %}
+
+            {% if list_data.ButtonUpdate and record.get_update_url and request.user|has_resource_permission:list_data.UpdateResource %}
+                <a href="{% url 'time-line' record.pk%}{% if request.META.QUERY_STRING %}?{{ request.META.QUERY_STRING }}{% endif %}" class="btn btn-warning"><i
+                        class="fa  fa-code-fork" title="Linha do tempo"></i></a>
+            {% endif %}
+
+            {% if list_data.ButtonDelete and record.get_delete_url and request.user|has_resource_permission:list_data.DeleteResource %}
+                <button data-toggle="modal"
+                        data-target="#deleteModal"
+                        data-obj="{{ record }}"
+                        data-action="{% url 'submicao-aluno-delete' record.pk%}{% if request.META.QUERY_STRING %}?{{ request.META.QUERY_STRING }}{% endif %}"
+                        class="btn btn-danger"><i
+                        class="fa fa-close"></i></button>
+            {% endif %}
+        </div>
+{% else %}
+    <span>—</span>
+{% endif %}

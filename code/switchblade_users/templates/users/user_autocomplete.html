@@ -1,0 +1,20 @@
+{% load i18n %}
+{% load thumbnail %}
+
+<span class="block person" data-value="{{ choice.pk }}">
+    <img src="{% thumbnail choice.profile_image.url 50x50 crop %}" />
+
+    <a href="{{ choice.get_absolute_url }}">
+        {{ choice.first_name }} {{ choice.last_name }}
+    </a>
+
+    <a href="{% url 'admin:persons_person_change' choice.pk %}">
+        {% trans 'Edit person' %}
+    </a>
+
+    {% if choice.company %}
+    <a href="{{ choice.get_absolute_url }}">
+        {{ choice.company }}
+    </a>
+    {% endif %}
+</span>

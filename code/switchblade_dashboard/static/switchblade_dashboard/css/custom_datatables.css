@@ -1,0 +1,64 @@
+/* -------------------------- */
+/*                            */
+/* DataTable Custom Style     */
+/*                            */
+/* -------------------------- */
+
+div.dataTables_wrapper div.dataTables_processing {
+    z-index: 999;
+}
+
+div.dataTables_wrapper div.dataTables_info  {
+    padding-top: 4px;
+}
+
+.select-info {
+    margin-left: 20px;
+}
+
+.table_header {
+    float: left;
+    margin-left: 20px;
+    min-width: 200px;
+    text-align: left;
+}
+
+@media (max-width: 767px) {
+    .table_header {
+        margin-top: -40px;
+    }
+}
+
+.dataTables_paginate.paging_simple_numbers {
+    margin-top: 10px !important;
+}
+
+.table_header .dt-buttons {
+    margin-left: -22px;
+}
+
+@media (max-width: 767px) {
+    .table_header .dt-buttons {
+        margin-top: 40px;
+    }
+}
+
+table.dataTable tbody > tr.selected, table.dataTable tbody > tr > .selected {
+    background-color: #FDFBD799;
+    color: #444;
+}
+
+.dataTables_processing {
+    height: 100%;
+    width: 100% !important;
+    padding-top: 0 !important;
+    top: 0px !important;
+    bottom: 0px;
+    margin-left: 0 !important;
+    margin-top: inherit !important;
+    margin-right: inherit;
+    margin-bottom: inherit;
+    left: 0 !important;
+    font-size: 60px;
+    background: rgba(255, 255, 255, 0.75);
+}

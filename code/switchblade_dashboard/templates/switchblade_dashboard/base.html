@@ -1,0 +1,354 @@
+{% load static %}
+{% load dashboard_tag %}
+{% load menu %}
+{% generate_menu %}
+{% load i18n %}
+
+<!DOCTYPE html>
+<html xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>
+        {% if PageTitle %}
+            {% block title %}{{ PageTitle }}{% endblock title %} | {{ SYSTEM_SHORT_NAME }}
+        {% else %}
+            {{ SYSTEM_SHORT_NAME }}
+        {% endif %}
+    </title>
+    <link rel="icon" href="{% static 'img/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'switchblade_dashboard/css/default_theme.css' %}">
+    <link rel="stylesheet" href="{% static 'switchblade_dashboard/libs/bootstrap/dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'switchblade_dashboard/admin-lte/css/AdminLTE.min.css' %}">
+    <link rel="stylesheet" href="{% static 'switchblade_dashboard/admin-lte/css/skins/skin-red.min.css' %}">
+    <link rel="stylesheet" href="{% static 'switchblade_dashboard/libs/font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'switchblade_dashboard/libs/pace/pace.css' %}">
+    <link rel="stylesheet" href="{% static 'switchblade_dashboard/css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'switchblade_dashboard/css/custom.css' %}">
+    <link rel="stylesheet" href="{% static 'switchblade_dashboard/css/iframe.css' %}">
+    <link rel="stylesheet" href="{% static 'switchblade_dashboard/css/fonts.css' %}">
+    <link rel="stylesheet" href="{% static 'switchblade_dashboard/css/back_to_top_btn.css' %}">
+    <link rel="stylesheet" href="{% static 'switchblade_dashboard/libs/select2/dist/css/select2.min.css' %}">
+    <link rel="stylesheet" href="{% static 'switchblade_dashboard/libs/bootstrap-daterangepicker/daterangepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'switchblade_dashboard/libs/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css' %}">
+    <link rel="stylesheet" href="{% static 'switchblade_dashboard/libs/wickedpicker/dist/wickedpicker.min.css' %}">
+    <link rel="stylesheet" href="{% static 'switchblade_dashboard/libs/summernote/summernote.min.css' %}">
+    <link rel="stylesheet" href="{% static 'switchblade_dashboard/css/base_theme.css' %}">
+    {% block extraHead %}{% endblock %}
+    <script src="{% static 'switchblade_dashboard/libs/jquery/dist/jquery.min.js' %}"></script>
+</head>
+{% block base_body %}
+    <body class="sidebar-mini skin-blue pace-done pace-done sidebar-collapse" cz-shortcut-listen="true">
+    <div class="wrapper">
+        {% with request.user.user_type as user_type %}
+            {% with request.resolver_match.url_name as url_name %}
+                <header class="main-header">
+                    <a href="/" class="logo">
+                    <span title="{{ SystemLongName }}"/>
+
+                        <span title="{{ SystemLongName }}"/>
+                    </a>
+                    <nav class="navbar navbar-static-top" role="navigation">
+                        <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                        <span class="sr-only">
+                            Toggle navigation
+                        </span>
+                        </a>
+                        <div class="pull-left navbar-default hidden-sm hidden-xs visible-md visible-lg"
+                             id="navbar-collapse">
+                            <ul class="nav navbar-nav" style="z-index: 9999">
+                                {% for item in menus.main %}
+                                    {% if item.list %}
+                                        <li {% if item.area == selected_menu.area %} class="active" {% endif %}>
+                                            <a href="{{ item.url }}">{{ item.title }}</a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="navbar-custom-menu">
+                            <ul class="nav navbar-nav">
+                                <li class="dropdown hidden-md hidden-lg">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        Menu
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        {% for item in menus.main %}
+                                            {% if item.list %}
+                                                <li {% if item.area == selected_menu.area %} class="active" {% endif %}>
+                                                    <a href="{{ item.url }}">{{ item.title }}</a>
+                                                </li>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                                {% if DEPLOY_ENV == 'staging' %}
+                                    <li>
+                                        <a class="bg-orange-active {{ DEPLOY_ENV }}" style="color: white !important;">
+                                            <i class="fa fa-code"></i> STAGING
+                                            <span class="text-sm">{{ STAGING_CODE_VERSION }} | db: {{ STAGING_DATABASE_VERSION }}</span>
+                                        </a>
+                                    </li>
+                                {% elif DEPLOY_ENV == 'dev' %}
+                                    <li>
+                                        <a class="bg-green-active {{ DEPLOY_ENV }}" style="color: white !important;">
+                                            <i class="fa fa-code"></i> DEVELOPMENT
+                                        </a>
+                                    </li>
+                                {% endif %}
+
+                                <li class="dropdown messages-menu" id="notification">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="fa fa-refresh fa-spin" v-show="is_loading" v-cloak></i>
+                                        <i v-if="!notifications.connection_error" class="fa fa-bell-o" v-cloak></i>
+                                        <i v-if="notifications.connection_error" class="fa fa-bell-slash-o text-red"
+                                           v-cloak></i>
+                                        <span class="label bg-red" v-if="notifications.unread_count" v-cloak>
+                                            [[ notifications.unread_count ]]
+                                        </span>
+                                    </a>
+                                    <ul class="dropdown-menu notification-dropdown">
+                                        <li class="header text-red" v-show="notifications.connection_error">
+                                            It's not possible to fetch notifications.<br/>Check your connection.
+                                        </li>
+                                        <li class="header"
+                                            v-if="notifications.unread_count && !notifications.connection_error">
+                                            You have [[ notifications.unread_count ]] unread notifications.
+                                            <a href="#" v-on:click="mark_all_as_read()" class="text-navy small">
+                                                <i class="fa fa-check-square-o"></i>
+                                                {% trans "Mark all as read" %}
+                                            </a>
+                                        </li>
+                                        <li class="header"
+                                            v-if="!notifications.unread_count && !notifications.connection_error">
+                                            You don't have unread notifications.
+                                        </li>
+                                        <li v-if="!notifications.connection_error">
+                                            <ul class="menu notify-list">
+                                                <li v-for="notification in notifications.unread_list">
+                                                    <a :href="[[ notification.url ]]">
+                                                        <div class="pull-left">
+                                                            <img :src="[[ notification.actor_avatar ]]"
+                                                                 class="img-circle"
+                                                                 :title="[[ notification.actor ]]">
+                                                        </div>
+                                                        <h4>
+                                                            [[ notification.verb ]]
+                                                            <small>
+                                                                <i class="fa fa-clock-o"></i>
+                                                                [[ notification.timestamp ]] ago
+                                                            </small>
+                                                        </h4>
+                                                        <p class="notification-text">
+                                                            [[ notification.description ]]
+                                                        </p>
+                                                        <div class="pull-right">
+                                                            <div class="notify-tools">
+                                                                <a href="#" v-on:click="mark_as_read(notification)"
+                                                                   class="text-green small">
+                                                                    <i class="fa fa-check-square-o"></i>
+                                                                    {% trans "Mark as read" %}
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <br/>
+                                            </ul>
+                                        </li>
+                                        <li class="footer" v-if="!notifications.connection_error">
+                                            <a href="#">{% trans "See all notifications" %}</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li class="user user-menu">
+                                    <a href="{% url 'dashboard-profile' %}">
+                                        <img src="{{ request.user.get_avatar_url }}" class="user-image">
+                                        <span class="hidden-xs">{{ request.user.get_short_name }}</span>
+                                    </a>
+                                </li>
+                                {% if request.user.is_superuser %}
+                                    <li>
+                                        <a href="/admin" title={% trans "Admin Area" %} >
+                                            <i class="fa fa-gears"></i>
+                                        </a>
+                                    </li>
+                                {% endif %}
+                                <li>
+                                    <a href="{% url 'logout' %}" title="Sign out">
+                                        <i class="fa fa-sign-out"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </header>
+
+                <aside class="main-sidebar {{ DEPLOY_ENV }}">
+                    <section class="sidebar">
+                        <ul class="sidebar-menu" data-widget="tree">
+                            {% for item in menus.sidebar %}
+                                {% if item.area == selected_menu.area and item.list %}
+                                    {% if item.children %}
+                                        <li class="treeview {% if item.selected %}menu-open{% endif %}">
+                                            {% if item.iframe %}
+                                                <a href="#"
+                                                   onclick="javascript:showContentOnIframe('{{ item.slug }}', '{{ item.url }}')">
+                                                    <i class="fa {{ item.icon }}"></i>
+                                                    <span>{{ item.title }}1</span>
+                                                    <span class="pull-right-container">
+                                                    <i class="fa fa-angle-left pull-right"></i>
+                                                </span>
+                                                </a>
+                                            {% else %}
+                                                <a href="">
+                                                    <i class="fa {{ item.icon }}"></i>
+                                                    <span>{{ item.title }}</span>
+                                                    <span class="pull-right-container">
+                                                    <i class="fa fa-angle-left pull-right"></i>
+                                                </span>
+                                                </a>
+
+                                            {% endif %}
+                                            <ul class="treeview-menu"
+                                                {% if item.selected %}style="display: block;" {% endif %}>
+                                                {% for child in item.children %}
+                                                    {% if child.list %}
+                                                        <li {% if child.selected %}class="active" {% endif %}>
+                                                            {% if child.iframe %}
+                                                                <a href="#"
+                                                                   onclick="javascript:showContentOnIframe('{{ item.slug }}', '{{ item.url }}')">
+                                                                    <i class="fa fa-circle-o"></i>
+                                                                    {{ child.title }}
+                                                                </a>
+                                                            {% else %}
+                                                                <a href="{{ child.url }}">
+                                                                    <i class="fa fa-circle-o"></i>
+                                                                    {{ child.title }}
+                                                                </a>
+                                                            {% endif %}
+                                                        </li>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </ul>
+                                        </li>
+                                    {% else %}
+                                        {% if item.iframe %}
+                                            <li id="{{ item.slug }}">
+                                                <a href="#"
+                                                   onclick="javascript:showContentOnIframe('{{ item.slug }}', '{{ item.url }}')">
+                                                    <i class="fa {{ item.icon }}"></i>
+                                                    <span>{{ item.title }}</span>
+                                                </a>
+                                            </li>
+                                        {% else %}
+                                            <li {% if item.selected %}class="active" {% endif %}>
+                                                <a href="{{ item.url }}">
+                                                    <i class="fa {{ item.icon }}"></i>
+                                                    <span>{{ item.title }}</span>
+                                                </a>
+                                            </li>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </section>
+                    <footer class="main-footer {{ DEPLOY_ENV }}">
+                        <strong>{{ SYSTEM_LONG_NAME }}</strong> - {{ SYSTEM_VERSION }} - {% trans "Copyright" %}
+                        &copy; {% now "Y" %} {{ SYSTEM_OWNER }} {% trans "All rights reserved." %}
+                    </footer>
+                </aside>
+            {% endwith %}
+        {% endwith %}
+
+        <div class="content-wrapper" style="background-color: #ECF0F5;">
+
+            <div id="panel-section">
+                <section class="content">
+
+                    {% if Header %}
+                        {% block content_header %}
+                            <section class="content-header">
+                                <h1>
+                                    {% block content_title %}{{ Header }}{% endblock content_title %}
+                                    <div class="pull-right">
+                                        {% block content_title_action %}{% endblock content_title_action %}
+                                    </div>
+                                </h1>
+                            </section>
+                        {% endblock content_header %}
+                    {% endif %}
+
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }} alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                    ×
+                                </button>
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    {% block content_main_row %}
+                        <div class="row">
+                            <div class="col-xs-12">
+                                {% block content_main %}{% endblock content_main %}
+                            </div>
+                        </div>
+                    {% endblock content_main_row %}
+                </section>
+
+                <div id="iframe-section">
+                    <div class="overlay" id="iframe-loading" style="display: none">
+                        <i class="fa fa-refresh fa-spin"></i>
+                    </div>
+                </div>
+
+                <a id="back-to-top">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+            </div>
+        </div>
+
+    </div>
+{% endblock base_body %}
+
+<script src="{% static 'switchblade_dashboard/admin-lte/js/adminlte-custom.js' %}"></script>
+<script src="{% static 'switchblade_dashboard/libs/bootstrap/dist/js/bootstrap.js' %}"></script>
+<script src="{% static 'switchblade_dashboard/libs/moment/min/moment.min.js' %}"></script>
+<script src="{% static 'switchblade_dashboard/libs/moment-duration-format/lib/moment-duration-format.js' %}"></script>
+<script src="{% static 'switchblade_dashboard/libs/select2/dist/js/select2.full.min.js' %}"></script>
+<script src="{% static 'switchblade_dashboard/libs/bootstrap-daterangepicker/daterangepicker.js' %}"></script>
+<script src="{% static 'switchblade_dashboard/libs/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js' %}"></script>
+<script src="{% static 'switchblade_dashboard/libs/wickedpicker/dist/wickedpicker.min.js' %}"></script>
+
+{% if debug %}
+    <script src="{% static 'switchblade_dashboard/libs/vue/dist/vue.js' %}"></script>
+{% else %}
+    <script src="{% static 'switchblade_dashboard/libs/vue/dist/vue.min.js' %}"></script>
+{% endif %}
+
+<script src="{% static 'switchblade_dashboard/libs/axios/dist/axios.min.js' %}"></script>
+<script src="{% static 'switchblade_dashboard/libs/pace/pace.min.js' %}"></script>
+<script src="{% static 'switchblade_dashboard/libs/bootstrap-notify-3.1.3/dist/bootstrap-notify.min.js' %}"></script>
+<script src="{% static 'switchblade_dashboard/libs/summernote/summernote.min.js' %}"></script>
+<script src="{% static 'switchblade_dashboard/vue_libs/notification.js' %}"></script>
+<script src="{% static 'switchblade_dashboard/js/custom.js' %}"></script>
+<script src="{% static 'switchblade_dashboard/js/iframe.js' %}"></script>
+<script src="{% static 'switchblade_dashboard/js/back_to_top_btn.js' %}"></script>
+<script src="{% static 'switchblade_dashboard/js/vanilla_javascript_utils.js' %}"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        csrfToken = '{{ csrf_token }}';
+    });
+</script>
+
+{% block vueBaseComponents %}{% endblock vueBaseComponents %}
+{% block extraJS %}{% endblock extraJS %}
+
+</body>
+</html>

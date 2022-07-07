@@ -1,0 +1,67 @@
+{% extends "switchblade_dashboard/base.html" %}
+{% load dashboard_tag %}
+{% load static %}
+
+
+{% block content_main %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css" rel="stylesheet"/>
+
+
+{%if aluno or user.is_admin%}
+<div class="box">
+    <div class="box-body">
+        <h3>Bem vindo {{user.fisrt_name}}!</h3>
+    </div>
+</div>
+<div class="box">
+    <div class="box-title">
+        <h3> Passo a Passo para verificação de assinatura</h3>
+    </div>
+    <div class="box-body">
+        <h4><b>1) Gerar Certificado Digital</b></h4>
+        Acesse o portal da RNP <a href=" https://pessoal.icpedu.rnp.br" target="_blank">clicando aqui</a>, emita e baixe seu Certificado Digital;
+        <h4><b>2) Assinar digitalmente os certificados: </b></h4>
+        <a href="https://assinador.iti.br/assinatura/index.xhtml" target="_blank">Clique aqui para assinar</a>!
+        <h4><b>3) Depois de fazer o upload do documento para fazer a assinatura digital , TEM QUE CLICAR , em alguma parte do documento.</b></h4>
+        <h4><b>4) Para verificar se a assinatura tá ok , fazer o upload do arquivo aqui :</b></h4>
+        <a href="https://assina.ufsc.br/verificador/" target="_blank">Clique aqui para acessar o verificador</a>
+    </div>
+</div>
+
+
+{%else%}
+
+    <div class="box">
+        <div class="box-body">
+            <h3>Bem vindo {{user.fisrt_name}} {{user.last_name}}!</h3>
+
+            <h2></h2>
+        </div>
+    </div>
+
+{%endif%}
+
+{% endblock content_main %}
+
+{% block title %}
+    {{ form_data.PageTitle }}
+{% endblock %}
+
+{% block content_title %}
+    {{ form_data.PageTitle }}
+{% endblock %}
+
+{% block extraJS %}
+    <script src="{% static 'registros/js/form.js' %}"></script>
+
+     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
+       <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+       <script src="{% static 'js/app.js' %}"></script>
+{% endblock extraJS %}

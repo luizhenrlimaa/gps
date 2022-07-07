@@ -1,0 +1,99 @@
+/* quick reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+html {
+  font-family: helvetica, arial, sans-serif;
+}
+
+/* relevant styles */
+.img__wrap {
+  position: relative;
+  width: 350px;
+}
+
+.img__description_layer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgb(107 106 106 / 80%);
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+
+.img__wrap:hover .img__description_layer {
+  visibility: visible;
+  opacity: 1;
+  border-radius: 50%;
+}
+
+.wrap .img-center {
+    width: 130% !important;
+}
+
+.img__description {
+  transition: .2s;
+  transform: translateY(1em);
+  cursor: pointer;
+  text-align: center;
+}
+
+.img__wrap:hover .img__description {
+  transform: translateY(0);
+}
+
+.clipper-fixed>div {
+    border-radius: 50%;
+}
+
+.my-clipper {
+    width: 350px;
+    max-width: 350px;
+}
+
+#label_browse {
+    cursor: pointer;
+}
+
+.wrap[data-v-23a39568] {
+    cursor: pointer;
+}
+
+.boxup .control-label.col-lg-4 {
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: -webkit-center;
+    margin-top: -35px;
+}
+
+.cover .area {
+    border: none;
+    width: 70% !important;
+}
+
+.fa.fa-camera {
+    padding-right: 10px;
+}
+
+.box-footer {
+    margin-bottom: -15px;
+}
+
+.btn-group.pull-right {
+    margin-top: 10px;
+}
+
+.btn.btn-default {
+    margin-top: 10px;
+}

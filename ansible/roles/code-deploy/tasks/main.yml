@@ -1,0 +1,64 @@
+  - name: Check folders presence
+    stat:
+      path: "{{ source_path }}"
+    register: source_path_file
+
+  - name: Remove old folder
+    file:
+      path: "{{ source_path }}.old"
+      state: absent
+
+  - name: Move actual source folder to .old
+    command: "mv {{ source_path }} {{ source_path }}.old"
+    when: source_path_file.stat.exists
+
+  - name: Clear code folder
+    file:
+      path: "{{ source_path }}"
+      state: absent
+
+  - name: Create code folder
+    file:
+      path: "{{ source_path }}"
+      state: directory
+      mode: 0775
+
+  - name: Unpack code.tar.gz to source folder
+    unarchive:
+      src: "code/code.tar.gz"
+      dest: "{{ source_path }}"
+      remote_src: no
+
+  - name: Check .old presence
+    stat:
+      path: "{{ source_path }}.old"
+    register: old_source_path
+
+  - name: Check media .old presence
+    stat:
+      path: "{{ source_path }}.old/code/media"
+    register: old_source_media
+
+  - name: Check log .old presence
+    stat:
+      path: "{{ source_path }}.old/log"
+    register: old_source_log
+
+  - name: Copy media files from .old
+    command: "cp -r {{ source_path }}.old/code/media {{ source_path }}/code"
+    when: old_source_media.stat.exists
+
+  - name: Copy log files from .old
+    command: "cp -r {{ source_path }}.old/log {{ source_path }}"
+    when: old_source_log.stat.exists
+
+  - name: Copy database env file from .old
+    command: "cp {{ source_path }}.old/database.env {{ source_path }}"
+
+  - name: Copy proj env file from .old
+    command: "cp {{ source_path }}.old/code/proj/.env {{ source_path }}/code/proj"
+
+  - name: Remove code.tar.gz
+    file:
+      path: "code/code.tar.gz"
+      state: absent

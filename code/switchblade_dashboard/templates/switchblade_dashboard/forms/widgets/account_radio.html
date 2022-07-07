@@ -1,0 +1,12 @@
+{% load workscopes_tag %}
+{% with id=widget.attrs.id %}
+    <div class="btn-group btn-group-toggle btn-group-sm {% if widget.attrs.class %}{{ widget.attrs.class }}{% endif %}" data-toggle="buttons" {% if id %} id="{{ id }}"{% endif %}>
+        {% for group, options, index in widget.optgroups %}
+            {% for option in options %}
+                <div class="btn btn-default">
+                    <input type="{{ option.type }}" name="{{ option.name }}" value="{{ option.value }}" id="{{ option.value }}" autocomplete="off" {% include "django/forms/widgets/attrs.html" %}>
+                    <img src=" {{ option.value|get_account_avatar }}" title="{{ option.label }}" class="-avatar js-avatar-me" width="40">
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>{% endwith %}

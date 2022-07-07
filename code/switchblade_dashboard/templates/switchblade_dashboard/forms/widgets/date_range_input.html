@@ -1,0 +1,16 @@
+{% load i18n %}
+<div class="input-group">
+    <div class="input-group-addon">
+        <i class="fa fa-calendar"></i>
+    </div>
+    <input type="{{ widget.type }}"
+           name="{{ widget.name }}"
+           {% if widget.value != None %}
+                value="{{ widget.value|stringformat:'s' }}"
+           {% endif %}
+           class="date-range form-control pull-right"
+           placeholder={% trans "Click to select date" %}
+           autocomplete="off"
+           readonly="readonly"
+           {% include "django/forms/widgets/attrs.html" %}>
+</div>

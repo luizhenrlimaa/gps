@@ -1,0 +1,8 @@
+#
+# Pack Code for Deployment
+#
+
+- hosts:
+    - local-host
+  roles:
+    - code-pack

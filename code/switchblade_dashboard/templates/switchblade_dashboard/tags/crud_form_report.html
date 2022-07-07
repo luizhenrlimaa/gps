@@ -1,0 +1,68 @@
+{% load dashboard_tag %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block extraHead %}
+    <link rel="stylesheet" href="{% static 'switchblade_dashboard/css/custom_form.css' %}">
+    <link rel="stylesheet" href="{% static 'switchblade_dashboard/css/tabbed_header_box.css' %}">
+{% endblock %}
+
+<form>
+    <div class="box-body">
+        <div class="form-horizontal report-form">
+            {% if 'FormHelper' in data %}
+                {% crispy data.Form data.FormHelper %}
+            {% else %}
+                {% crispy data.Form %}
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="box-footer">
+        {% if data.ButtonBack %}
+            <a href="javascript:history.back();" class="btn btn-default">
+                <i class="fa fa-arrow-left"></i>
+                {% trans "Back" %}
+            </a>
+        {% endif %}
+
+        <div class="btn-group pull-right">
+            <button type="button" class="btn btn-default" id="clearFilter" onclick="clean_form_data()">
+                <i class="fa fa-trash-o"></i> Clear Filter
+            </button>
+            <button type="submit" class="btn btn-default" name="submit-btn" value="export">
+                <i class="fa fa-file-excel-o"></i> {% trans "Export to excel" %}
+            </button>
+            <button type="submit" class="btn btn-success" name="submit-btn" value="screen" onclick="updateForm()">
+                <i class="fa fa-bar-chart"></i> {% trans "Generate report" %}
+            </button>
+        </div>
+    </div>
+</form>
+
+{% block extraJS %}
+    <script src="{% static 'switchblade_dashboard/js/keep_form_data.js' %}"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            syncFormData();
+        });
+
+        function updateForm() {
+            let fields = [];
+
+            {% for fieldName in data.Form.fields %}
+
+                let fieldId = 'id_{{ fieldName }}';
+                let element = document.getElementById(fieldId);
+
+                if (element) {
+                    fields.push(new FormField(fieldId, element.classList[0],  element.value === 'on' ? element.checked : element.value, []));
+                }
+
+            {% endfor %}
+
+            updateFormData({ fields: fields });
+        }
+    </script>
+{% endblock extraJS %}

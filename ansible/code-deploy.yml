@@ -1,0 +1,5 @@
+
+- hosts:
+    - bridge-server
+  roles:
+    - code-deploy

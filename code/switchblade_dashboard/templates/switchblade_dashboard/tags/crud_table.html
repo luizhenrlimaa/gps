@@ -1,0 +1,119 @@
+{% load dashboard_tag %}
+{% load static %}
+{% load i18n %}
+
+<div class="box box-default">
+    <div class="box-header with-border">
+        <h3 class="box-title">{{ data.Header }}</h3>
+        {% if data.AddButton %}
+            <div class="pull-right">
+                <a href="{{ data.AddButton.Url }}" class="btn bg-green">
+                    <i class="fa fa-plus-circle"></i>
+                     {{ data.AddButton.Title }}
+                </a>
+            </div>
+        {% endif %}
+    </div>
+    <div class="box-body">
+        <div class="row">
+            <div class="col-sm-12">
+
+                <table class="table table-bordered table-hover dataTable" role="grid" style="width:100%">
+                    <thead>
+                        <tr role="row">
+                            {% for k,v in data.Columns.items %}
+                                <th>{{ k }}</th>
+                            {% endfor %}
+                            {% if data.ButtonDetail or data.ButtonUpdate or data.ButtonDelete %}
+                                <th>{% trans "Options" %}</th>
+                            {% endif %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for obj in data.Objects %}
+                            <tr role="row">
+
+                                {% for k,v in data.Columns.items %}
+                                    <td>{{ obj|get_attribute:v }}</td>
+                                {% endfor %}
+
+                                {% if data.ButtonDetail or data.ButtonUpdate or data.ButtonDelete %}
+                                    <td class="text-center text-nowrap">
+                                        <div class="btn-group-xs">
+                                            {% if data.ButtonDetail and obj.get_absolute_url %}
+                                                <a href="{{ obj.get_absolute_url }}" class="btn btn-info">
+                                                    <i class="fa fa-search" title="{% trans "View details" %}"></i>
+                                                </a>
+                                            {% endif %}
+                                            {% if data.ButtonUpdate and obj.get_update_url %}
+                                                <a href="{{ obj.get_update_url }}" class="btn btn-warning">
+                                                    <i class="fa fa-pencil" title="{% trans "Update" %}"></i>
+                                                </a>
+                                            {% endif %}
+                                            {% if data.ButtonDelete and obj.get_delete_url %}
+                                                <button data-toggle="modal"
+                                                        data-target="#deleteModal"
+                                                        data-obj="{{ obj }}"
+                                                        data-action="{{ obj.get_delete_url }}"
+                                                        class="btn btn-danger">
+                                                    <i class="fa fa-close"></i>
+                                                </button>
+                                            {% endif %}
+                                        </div>
+                                    </td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if data.ButtonDelete %}
+    <div class="modal modal-danger" id="deleteModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Delete</h4>
+                </div>
+                <div class="modal-body">
+                    <p>{% trans 'Do you want to delete' %} <b><span id="modal-obj"></span></b>?</p>
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-default pull-left" data-dismiss="modal">Cancel</a>
+                    <form method="post" action="" id="deleteForm">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-outline">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+<script src="{% static 'switchblade_dashboard/libs/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'switchblade_dashboard/libs/datatables.net-bs/js/dataTables.bootstrap.min.js' %}"></script>
+<script>
+  $(document).ready(function() {
+
+        $('table.table').DataTable({
+            stateSave: true,
+            "scrollX": true,
+        });
+      {% if data.ButtonDelete %}
+      $('#deleteModal').on('show.bs.modal', function (event) {
+          var button = $(event.relatedTarget);
+          var obj = button.data('obj');
+          var action = button.data('action');
+          var modal = $(this);
+          modal.find('#modal-obj').text(obj);
+          modal.find('#deleteForm').attr("action", action);
+      });
+      {% endif %}
+  });
+</script>
+

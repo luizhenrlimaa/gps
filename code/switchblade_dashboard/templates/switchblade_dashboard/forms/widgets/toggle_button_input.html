@@ -1,0 +1,17 @@
+{% if 'as_button_box' in widget.attrs and not widget.attrs.as_button_box %}
+    <label class="switch">
+        <input type="checkbox" {% if widget.name %} name="{{ widget.name }}" id="id_{{ widget.name }}"{% endif %}>
+        <div class="slider round" {% if widget.attrs.onclick %}onclick="{{ widget.attrs.onclick }}"{% endif %} {% include "django/forms/widgets/attrs.html" %}></div>
+    </label>
+{% else %}
+    <div class="checkbox-button-box">
+        <div class="input-group">
+        </div>
+        <label class="switch">
+            <input type="checkbox"
+                   {% if widget.name %} name="{{ widget.name }}" id="id_{{ widget.name }}"{% endif %}>
+                <div class="slider round"
+                     {% if widget.attrs.onclick %}onclick="{{ widget.attrs.onclick }}"{% endif %} {% include "django/forms/widgets/attrs.html" %}></div>
+        </label>
+    </div>
+{% endif %}

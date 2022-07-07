@@ -1,0 +1,138 @@
+{% load dashboard_tag %}
+{% load static %}
+{% load i18n %}
+
+{% block extraHead %}
+    <link rel="stylesheet" href="{% static 'switchblade_dashboard/css/base_report.css' %}">
+{% endblock %}
+
+{% if charts %}
+    <div class="row">
+        <div class="col-sm-12 content-expand-col">
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    {% for chart in charts %}
+                        <li {% if forloop.first %}class="active" {% endif %}>
+                            <a href="#chart-{{ forloop.counter }}" onclick="resizeCharts();" data-toggle="tab">
+                                {% if chart.icon %}
+                                    <i class="fa {{ chart.icon }}"></i>
+                                {% endif %}
+                                {{ chart.title }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                    <li class="pull-right header">
+                        <i class="fa fa-line-chart"></i>
+                         Charts
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    {% for chart in charts %}
+                        <div class="tab-pane {% if forloop.first %}active{% endif %}" id="chart-{{ forloop.counter }}">
+                            {{ chart.chart|safe }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% if tables %}
+    <div class="row">
+        <div class="col-sm-12 content-expand-col">
+            <div class="nav-tabs-custom">
+                <ul class="nav nav-tabs">
+                    {% for table in tables %}
+                        <li {% if forloop.first %}class="active" {% endif %}>
+                            <a href="#table-{{ forloop.counter }}" onclick="resizeTables();" data-toggle="tab">
+                                {% if table.icon %}
+                                    <i class="fa {{ table.icon }}"></i>
+                                {% endif %}
+                                {{ table.title }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                    <li class="pull-right header">
+                        <i class="fa fa-table"></i>
+                         Tables
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    {% for table in tables %}
+                        <div class="tab-pane {% if forloop.first %}active{% endif %}" id="table-{{ forloop.counter }}">
+                            {{ table.table|safe }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+<script src="{% static 'switchblade_dashboard/libs/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'switchblade_dashboard/libs/datatables.net-bs/js/dataTables.bootstrap.min.js' %}"></script>
+<script src="{% static 'switchblade_dashboard/libs/datatables.net-select/js/dataTables.select.min.js' %}"></script>
+<script src="{% static 'switchblade_dashboard/libs/datatables.net-buttons/js/dataTables.buttons.min.js' %}"></script>
+<script src="{% static 'switchblade_dashboard/libs/datatables.net-buttons/js/buttons.html5.min.js' %}"></script>
+<script src="{% static 'switchblade_dashboard/libs/datatables.net-buttons/js/buttons.print.min.js' %}"></script>
+<script src="{% static 'switchblade_dashboard/libs/pdfmake/build/pdfmake.min.js' %}"></script>
+<script src="{% static 'switchblade_dashboard/libs/pdfmake/build/vfs_fonts.js' %}"></script>
+<script src="{% static 'switchblade_dashboard/libs/jszip/dist/jszip.min.js' %}"></script>
+<script>
+    function resizeTables() {
+        setTimeout(function () {
+            $($.fn.dataTable.tables( true ) ).DataTable().columns.adjust().draw();
+        },200);
+    }
+
+    $(document).ready(function () {
+
+        resizeCharts();
+
+        $('table.table').DataTable({
+            "scrollX": true,
+            "autoWidth": false,
+            dom: '<"box-header"<"table_header"B><"table_header"f><"table_header"l><"table_header"i>>rt<"table_header"p>p',
+            paging: false,
+            select: true,
+            order: [],
+            buttons: [
+                {
+                    extend: 'copy',
+                    text: 'Copy to clipboard',
+                    className: 'btn btn-sm btn-default',
+                    title: null
+                },
+                {
+                    extend: 'csv',
+                    text: 'Export to CSV',
+                    className: 'btn btn-sm btn-default',
+                    title: null
+                },
+                {
+                    extend: 'excel',
+                    text: 'Export to Excel',
+                    className: 'btn btn-sm btn-default',
+                    title: null
+                },
+                {
+                    extend: 'pdf',
+                    text: 'Export to PDF',
+                    className: 'btn btn-sm btn-default',
+                    orientation: 'landscape',
+                    title: null
+                },
+                {
+                    extend: 'print',
+                    text: 'Print',
+                    className: 'btn btn-sm btn-default',
+                    title: null
+                }
+            ]
+        });
+
+        resizeTables();
+    });
+</script>
+

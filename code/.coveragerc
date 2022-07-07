@@ -1,0 +1,21 @@
+[run]
+branch = True
+omit =
+    */migrations/*
+    static/*
+    static_files/*
+    media/*
+    htmlcov/*
+    urls.py
+    */tests.py
+    */apps.py
+    */urls.py
+    proj/*
+    manage.py
+source = .
+#plugins =
+#    django_coverage_plugin
+
+[report]
+show_missing = True
+skip_covered = True

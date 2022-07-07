@@ -1,0 +1,57 @@
+site_name: CIDC HUB
+repo_url: http://git.huawei.com/cidc/cidc-hub
+site_dir: var/docs
+dev_addr: 127.0.0.1:8001
+markdown_extensions:
+  - admonition
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  - codehilite
+theme:
+  name: 'material'
+#  logo:
+#    icon: 'cloud'
+  feature:
+    tabs: true
+nav:
+  - Home: index.md
+  - DevOps:
+    - Introduction: devops/devops.md
+    - Setup on Windows: devops/windows-env.md
+    - Configure Environment: devops/config-env.md
+    - Initial Servers Setup: devops/initial-servers-setup.md
+    - Load Docker Images: devops/load-images.md
+    - Deploy Code: devops/deploy-code.md
+  - Dev Environment:
+    - Environment Installation: devenv/install.md
+    - Deploy Info: devenv/deploy-info.md
+    - Database Backup & Restore: devenv/database.md
+    - Useful Tips: devenv/usefultips.md
+  - Routines:
+    - Deploy: routines/deploy.md
+    - Development: routines/development.md
+    - Delivery: routines/delivery.md
+    - Support: routines/support.md
+    - Requisites: routines/requisites.md
+  - Organizational Structure:
+    - Personnel: structure/people.md
+    - Team: structure/team.md
+
+plugins:
+    - search
+
+copyright: Copyright &copy; Inatel CIDC

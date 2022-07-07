@@ -1,0 +1,286 @@
+/* Screen */
+
+.content {
+    min-height: auto !important;
+}
+
+.content-header {
+    padding-top: 0px !important;
+}
+
+.leaflet-top.leaflet-left {
+    z-index: 500;
+    margin-left: 50px;
+}
+
+.leaflet-control-search.search-exp.leaflet-control input {
+    outline: none;
+    color: #444;
+}
+
+.leaflet-top.leaflet-left .leaflet-control-zoom.leaflet-bar.leaflet-control {
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.main-footer {
+    margin-top: 0px !important;
+}
+
+.split {
+     -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+     box-sizing: border-box;
+     overflow-y: auto;
+     overflow-x: hidden;
+}
+
+.gutter {
+     background-color: transparent;
+     background-repeat: no-repeat;
+     background-position: 50%;
+}
+
+.gutter.gutter-horizontal {
+     cursor: col-resize;
+     background-image: url('../grips/vertical.png');
+}
+
+.gutter.gutter-vertical {
+     cursor: row-resize;
+     background-image: url('../grips/horizontal.png');
+}
+
+.split.split-horizontal,
+.gutter.gutter-horizontal {
+     height: 100%;
+     float: left;
+}
+
+#info_area_container {
+    margin-bottom: 0px !important;
+    height: 47px;
+    bottom: -5px;
+    width: 101%;
+    border-radius: 0;
+    border-top-color: #FFF;
+}
+
+#info_area_container::-webkit-scrollbar-thumb {
+    background: #ACACAC !important;
+}
+
+#info_area_container::-webkit-scrollbar-thumb:hover {
+    background: #DD4B39 !important;
+}
+
+/* Leaflet Sidebar */
+
+.leaflet-sidebar-header {
+    background-color: #3C3C3C !important;
+}
+
+.leaflet-sidebar-tabs>li.active, .leaflet-sidebar-tabs>ul>li.active {
+    background-color:  #3C3C3C !important;
+}
+
+
+/* Leaflet Layers Control */
+
+.leaflet-control-layers {
+  border-radius: none;
+  box-shadow: none;
+}
+
+.leaflet-control-layers-expanded {
+  width: 100% !important;
+  padding: 0px;
+  background-color: transparent;
+  border: none !important;
+}
+
+#layercontrol {
+  display: inline-block;
+  width: 100%;
+  padding: 10px;
+  background-color: transparent;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+#layercontrol .title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Leaflet Draw */
+
+.leaflet-draw {
+  display: none;
+}
+
+.leaflet-draw-toolbar {
+  display: none;
+}
+
+#latlng {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 7px 1px 3px;
+  margin-left: auto;
+  margin-right: auto;
+  color: black;
+  background-color: white;
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-topright: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  -webkit-box-shadow: 0px -2px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px -2px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px -2px 5px 0px rgba(0, 0, 0, 0.75);
+  z-index: 1000;
+  display: none;
+}
+
+/* Legend */
+
+.info-legend {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+
+.legend {
+	line-height: 18px;
+	color: #555;
+}
+
+.legend i {
+	width: 18px;
+	height: 18px;
+	float: left;
+	margin-right: 8px;
+}
+
+/* Cluster */
+
+.marker-cluster {
+    background-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Seach */
+
+.search-input {
+    width: 18.5em;
+}
+
+#info_area_container .box-body {
+    padding: 9px 10px 0 10px;
+}
+
+#info-area-icon {
+    margin-top: 4px;
+}
+
+#detail-out {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.info-legend legend leaflet-control {
+    z-index: 1;
+}
+
+#map {
+    z-index: 0;
+    left: 0;
+    width: 100%;
+    border-style: groove;
+    border-width: 1px 1px 1px 1px;
+    border-color: rgb(0, 0, 0, 0.1);
+    position: fixed;
+    height: calc(100vh - 50px) !important;
+    margin-top: -15px;
+    outline: none;
+    width: 100%;
+}
+
+.leaflet-bottom.leaflet-left {
+    margin-left: 55px;
+    bottom: 67px;
+}
+
+#sidebar {
+    height: 500px;
+    margin-right: 4px;
+    border-radius: 0;
+}
+
+.leaflet-control-search .search-button {
+    height: 28px;
+    margin-top: 1px;
+    border-radius: 0;
+}
+
+.leaflet-control-search.search-exp {
+    border: 0;
+    border-radius: 0;
+    margin-top: 11px;
+    margin-right: 19px;
+}
+
+.leaflet-control-zoom.leaflet-bar.leaflet-control a, #sidebar, .leaflet-control-search.search-exp {
+    background-color: #FFFFFFc9 !important;
+}
+
+.leaflet-sidebar.leaflet-control.leaflet-sidebar-right.collapsed .leaflet-sidebar-tabs,
+.leaflet-control-search.search-exp input, .leaflet-control-search.search-exp a {
+    background-color: #FFFFFF38 !important;
+}
+
+.leaflet-control-zoom-out, .leaflet-control-zoom-in {
+    border-radius: 0 !important;
+}
+
+.info-legend.legend.leaflet-control {
+    border-radius: 0 !important;
+}
+
+.leaflet-control-zoom.leaflet-bar.leaflet-control {
+    margin-left: 15px;
+    margin-top: 15px;
+}
+
+#map_container .form-horizontal.box{
+    margin-bottom: 0px;
+    border-top-width: 0px;
+}
+
+.custom-padding {
+    padding: 0px 10px 0 10px !important;
+}
+
+.custom-padding-icon {
+    padding: 7px 0px 0 0px !important;
+}
+
+.polygon-name{
+  background: rgba(255, 255, 255, 0);
+  border:0;
+  border-radius:0px;
+  box-shadow: 0 0px 0px;
+}
+
+.leaflet-control-search.search-exp, #info_area_container, .leaflet-control-search.search-exp, #sidebar,
+.info-legend.legend.leaflet-control, .leaflet-control-zoom.leaflet-bar.leaflet-control a {
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}

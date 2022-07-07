@@ -1,0 +1,295 @@
+{% extends "switchblade_dashboard/base.html" %}
+{% load dashboard_tag %}
+{% load static %}
+{% load i18n %}
+{% load render_table from django_tables2 %}
+{% load export_url from django_tables2 %}
+{% load querystring from django_tables2 %}
+
+{% load crispy_forms_tags %}
+
+{% block extraHead %}
+    <link rel="stylesheet" href="{% static 'switchblade_dashboard/css/list_table.css' %}">
+    <link rel="stylesheet" href="{% static 'switchblade_dashboard/css/tabbed_header_box.css' %}">
+{% endblock %}
+
+{% block content_header %}
+    {% if not filter %}
+        {% if Header %}
+            <section class="content-header">
+                <h1>
+                    {{ Header }}
+                    <div class="pull-right">
+                        {% block content_title_action %}
+                            {% include 'switchblade_dashboard/list_table_action_buttons.html' %}
+                        {% endblock content_title_action %}
+                    </div>
+                </h1>
+            </section>
+        {% endif %}
+    {% endif %}
+{% endblock %}
+
+{% block content_main_row %}
+    {% if filter %}
+        <div class="tabbed-box">
+            <div class="overlay" id="search-loading" style="display: none !important;">
+                <i class="fa fa-refresh fa-spin"></i>
+            </div>
+            <div class="nav-tabs-custom box-tabs">
+                <ul id="filter-badges" class="nav nav-tabs">
+                    <li class="header-tab">
+                        <h3>{% block content_title %}{{ Header }}{% endblock content_title %}</h3>
+                    </li>
+                    <li class="default-tab active">
+                        <a href="#tab" data-toggle="tab">
+                            <i class="fa fa-search tabbed-box-tab-icon"></i>
+                             Search
+                            <span class="label tabbed-box-tab-selected-badge-counter-transparent">0</span>
+                        </a>
+                    </li>
+                    <a class="btn pull-right nav-filter-button">
+                        <i id="show-hide-search-box-button" class="fa fa-chevron-down"></i>
+                    </a>
+                </ul>
+            </div>
+            <div class="box-tabs-content collapsed-box" v-cloak="" style="display: block;">
+                <form method="GET" action="" enctype="multipart/form-data" id="search-form">
+                    <div class="tab-content">
+                        <div class="tab-pane pad active" id="tab">
+                            <div class="row">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        {% if filter.helper is not None %}
+                                            {% crispy filter.form filter.helper %}
+                                        {% else %}
+                                            {% crispy filter.form %}
+                                        {% endif %}
+                                        {% if request.GET.sort %}
+                                            <input type="hidden" name="sort" value="{{ request.GET.sort }}"/>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="box-footer clearfix">
+                    <div class="pull-left">
+                        {% include 'switchblade_dashboard/list_table_action_buttons.html' %}
+                    </div>
+                    <div class="btn-group pull-right">
+                        {% if rows > 0 %}
+                        <spam id="items-found-qtd"> {{ rows }}  Items found &nbsp;&nbsp;</spam>
+                        {% endif %}
+                        {% for action, action_items in Actions.items %}
+                            {% if action_items.use_filter_as_qs %}
+                                <form action="" method="post" class="action-form">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="action" value="{{ action }}">
+                                    <input type="hidden" name="ids" value="">
+                                    <input type="button"
+                                           class="btn {{ action_items.btn_class|default:'btn-default' }}"
+                                            {% if not request.META.QUERY_STRING %}
+                                           disabled="disabled" {% endif %} value="{{ action_items.text }}"
+                                           onclick="submit_action(this.form)">
+                                </form>
+                            {% endif %}
+                        {% endfor %}
+                        <button type="button" class="btn btn-default" id="clear" onclick="clear_search()"
+                                {% if not request.META.QUERY_STRING %} disabled="disabled"{% endif %}>
+                            <i class="fa fa-trash"></i> Clear Filter
+                        </button>
+                        <button class="btn btn-success" id="submit" onclick="$('#search-form').submit()">
+                            <i class="fa fa-search"></i> Search
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if rows > 0 %}
+        <div class="row">
+            <div id="table-container" class="col-xs-12">
+                <div class="box box-default">
+                    <div class="box-body">
+                        {% block list_table %}
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    {% render_table table %}
+                                </div>
+                            </div>
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <h1 class="">
+                    <br/>
+                    <small>No Items Found</small>
+                    <br/>
+                </h1>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if ButtonDelete %}
+        <div class="modal modal-danger" id="deleteModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">Delete</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            {% trans 'Do you want to delete' %} <b><span id="modal-obj"></span></b>?
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <a class="btn btn-default pull-left" data-dismiss="modal">
+                            Cancel
+                        </a>
+                        <form method="post" action="" id="deleteForm">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-outline">
+                                Delete
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {% if TemplateButtons and request.user|has_resource_permission:TemplateResource %}
+        <div class="modal modal-default" id="importModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form method="post" action="" id="importForm" enctype="multipart/form-data">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title">Update from XLS template</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                                Select template file to import.
+                            </p>
+                            <p class="pad">
+                                <input id="file" type="file" name="file" required="required"
+                                       accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <a class="btn btn-default pull-left" data-dismiss="modal">
+                                Cancel
+                            </a>
+                            {% csrf_token %}
+                            <input type="hidden" name="_template" value="import">
+                            <button type="submit" class="btn btn-success">
+                                Import
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal modal-default" id="exportTemplateModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">Export template</h4>
+                    </div>
+                    <div class="modal-body">
+                        <ul>
+                            {% if ColumnsToIgnore %}
+                                <li>
+                                    The columns <b>{{ ColumnsToIgnore|join:', ' }}</b> in this template will be ignored when importing.
+                                </li>
+                            {% endif %}
+                            <li>To delete an item set column DELETE to TRUE.</li>
+                            <li>To insert a new item fill all the columns and leave ID column empty.</li>
+                            <li>You will be only capable of insert or delete item if you have permission for that.</li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <a class="btn btn-default pull-left" data-dismiss="modal">Cancel</a>
+                        <a href="{% querystring "_template"="export" %}" class="btn btn-success"
+                           onclick="$('#exportTemplateModal').modal('hide');">
+                            <i class="fa fa-download"></i> Export as XLS template
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% block extra_content %}{% endblock extra_content %}
+{% endblock content_main_row %}
+
+{% block extraJS %}
+    <script src="{% static 'switchblade_dashboard/js/tabbed_header_box.js' %}"></script>
+    <script>
+        document.addEventListener('keyup', (event) => {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                $('#search-form').submit();
+            }
+        });
+
+        function submit_action(form) {
+            form.elements['ids'].value = JSON.stringify($.map($('input[name="select_row"]:checked'), function (c) {
+                return c.value;
+            }));
+            form.submit();
+        }
+
+        function clear_search(form) {
+            window.location.href = "{{ request.path_info }}";
+        }
+
+        function toggle(source) {
+            checkboxes = document.getElementsByName('select_row');
+            for (var i in checkboxes)
+                checkboxes[i].checked = source.checked;
+        }
+
+        $(document).ready(function () {
+
+            {% if ButtonDelete %}
+                $('#deleteModal').on('show.bs.modal', function (event) {
+                    var button = $(event.relatedTarget);
+                    var obj = button.data('obj');
+                    var action = button.data('action');
+                    var modal = $(this);
+                    modal.find('#modal-obj').text(obj);
+                    modal.find('#deleteForm').attr("action", action);
+
+                });
+            {% endif %}
+
+            {% if TemplateButtons and request.user|has_resource_permission:TemplateResource %}
+                $('#importModal').on('show.bs.modal', function (event) {
+                    var button = $(event.relatedTarget);
+                    {#var obj = button.data('obj');#}
+                    {#var action = button.data('action');#}
+                    var modal = $(this);
+                    {#modal.find('#modal-obj').text(obj);#}
+                    {#modal.find('#deleteForm').attr("action", action);#}
+                });
+            {% endif %}
+
+        });
+    </script>
+{% endblock %}

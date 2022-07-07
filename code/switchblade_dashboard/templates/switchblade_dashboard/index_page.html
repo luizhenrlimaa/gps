@@ -1,0 +1,132 @@
+{% extends "switchblade_dashboard/base.html" %}
+{% load staticfiles %}
+
+{% block extraHead %}
+    <link rel="stylesheet" href="{% static 'switchblade_dashboard/css/index_widget.css' %}">
+{% endblock %}
+
+{% if Header %}
+    {% block content_header %}
+        <div class="row" style="width: 100%">
+            <div class="col-sm-12">
+                <div class="col-sm-12">
+                    <section class="content-header">
+                        <h1>
+                            {% block content_title %}{% endblock content_title %}
+                            <div class="pull-right">
+                                {% block content_title_action %}{% endblock content_title_action %}
+                            </div>
+                        </h1>
+                    </section>
+                </div>
+            </div>
+        </div>
+    {% endblock content_header %}
+{% endif %}
+
+{% block content_main %}
+    <div class="row">
+        <div class="col-sm-12">
+            {% for column in menu_items %}
+                <div id="left_items" class="col-md-{{ column.col_size }}">
+                    {% for item in column.items %}
+                        {% if item.children %}
+                            <div class="index-widget box">
+                                <div class="box-widget widget-user-2">
+                                    <div class="widget-user-header">
+                                        <h3 class="widget-user-username">
+                                            {{ item.title }}
+                                            {% if item.help_template %}
+                                                <small class="pull-right">
+                                                    <i id="{{ item.slug }}" class="fa fa-info-circle item-data info"></i>
+                                                </small>
+                                            {% endif %}
+                                        </h3>
+                                        {% if item.subtitle %}
+                                            <h5 class="widget-user-desc">{{ item.subtitle }}</h5>
+                                        {% endif %}
+                                    </div>
+                                    <div class="widget-user-image">
+                                        <span class="info-box-icon">
+                                            <i class="fa {{ item.icon|default_if_none:'fa-circle-o' }}" style="color: #FFF"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="box-footer no-padding">
+                                    <ul class="nav nav-stacked">
+                                        {% if item.children %}
+                                            {% for child in item.children %}
+                                                {% if child.list %}
+                                                    <li>
+                                                        <a href="{{ child.url }}">
+                                                            <i class="fa {{ child.icon|default_if_none:'fa-circle-o' }} item-icon"></i>
+                                                             {{ child.title }}
+                                                            {% if child.has_help %}
+                                                                <i id="modal-help" onclick="showHelpModal('{{ child.slug }}')" class="item-data info pull-right fa fa-info-circle"></i>
+                                                            {% endif %}
+                                                            {% if child.new %}
+                                                                <i class="item-data new pull-right fa fa-star-o"></i>
+                                                            {% endif %}
+                                                        </a>
+                                                    </li>
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                            </div>
+                        {% else %}
+                            <a href="{{ item.url }}" class="index-widget box">
+                                <div class="box-widget widget-user-2">
+                                    <div class="widget-user-header">
+                                        <h3 class="widget-user-username">
+                                            {{ item.title }}
+                                            {% if item.help_template %}
+                                                <small class="pull-right">
+                                                    <i id="{{ item.slug }}" class="fa fa-info-circle item-data info"></i>
+                                                </small>
+                                            {% endif %}
+                                        </h3>
+                                        {% if item.subtitle %}
+                                            <h5 class="widget-user-desc">{{ item.subtitle }}</h5>
+                                        {% endif %}
+                                    </div>
+                                    <div class="widget-user-image">
+                                        <span class="info-box-icon">
+                                            <i class="fa {{ item.icon|default_if_none:'fa-circle-o' }}"></i>
+                                        </span>
+                                    </div>
+                                    <div class="box-footer no-padding"></div>
+                                </div>
+                            </a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="modal" id="help">
+        <div class="modal-dialog modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+                <h4 class="modal-title">Help</h4>
+            </div>
+            <div class="modal-body">
+                <div id="help-data">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extraJS %}
+    <script src="{% static 'switchblade_dashboard/js/help_modal.js' %}"></script>
+{% endblock extraJS %}

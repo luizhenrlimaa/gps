@@ -1,0 +1,87 @@
+/* ------------------------------------- */
+/*                                       */
+/* Tree Checklist View Custom Style      */
+/*                                       */
+/* ------------------------------------- */
+
+.container {
+    position: relative;
+    padding-left: 35px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    margin-bottom: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color: #444;
+    transition-property: background;
+    transition-duration: 0.4s;
+    transition-delay: 0s;
+}
+
+.container:hover {
+    background: #F1F1F1;
+    color: black;
+}
+
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    transition-property: background-color;
+    transition-duration: 2s;
+    transition-delay: 0s;
+}
+
+.checkbox-description {
+    font-size: 16px;
+    color: #8E8E8E;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+        height: 30px;
+    width: 30px;
+    background-color: #EEE;
+    transition-property: background;
+    transition-duration: 0.3s;
+    transition-delay: 0s;
+}
+
+.container:hover input ~ .checkmark {
+    background-color: #CCC;
+}
+
+    .container input:checked ~ .checkmark {
+    background-color: #545050;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.container .checkmark:after {
+    left: 11px;
+    top: 7px;
+    width: 6px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}

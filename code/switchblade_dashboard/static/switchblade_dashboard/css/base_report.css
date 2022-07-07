@@ -1,0 +1,9 @@
+.content-expand-col {
+    width: auto !important;
+    min-width: 100% !important;
+}
+
+.content-expand-col .dataTables_scrollBody {
+    overflow: unset;
+    max-height: unset;
+}

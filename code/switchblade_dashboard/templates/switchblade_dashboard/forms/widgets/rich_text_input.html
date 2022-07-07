@@ -1,0 +1,15 @@
+<textarea name="{{ widget.name }}" id="{{ widget.attrs.id }}" {% include "django/forms/widgets/attrs.html" %}>
+    {% if widget.value %}
+        {{ widget.value }}
+    {% endif %}
+</textarea>
+
+{% if not widget.attrs.ignore_js %}
+    <script>
+        $(() => {
+            $('#{{ widget.attrs.id }}').summernote({
+                height: 200,
+           });
+        });
+    </script>
+{% endif %}

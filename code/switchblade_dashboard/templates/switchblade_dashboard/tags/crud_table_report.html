@@ -1,0 +1,75 @@
+{% load dashboard_tag %}
+{% load static %}
+{% load i18n %}
+
+{% block extraHead %}
+    <link rel="stylesheet" href="{% static 'switchblade_dashboard/css/custom_datatables.css' %}">
+    <link rel="stylesheet" href="{% static 'switchblade_dashboard/libs/datatables.net-bs/css/dataTables.bootstrap.min.css' %}">
+{% endblock %}
+
+<div class="box box-default">
+    <div class="box-body">
+        <div class="row">
+            <div class="col-sm-12">
+                {{ table|safe }}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block extraJS %}
+    <script src="{% static 'switchblade_dashboard/libs/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'switchblade_dashboard/libs/datatables.net-bs/js/dataTables.bootstrap.min.js' %}"></script>
+    <script src="{% static 'switchblade_dashboard/libs/datatables.net-select/js/dataTables.select.min.js' %}"></script>
+    <script src="{% static 'switchblade_dashboard/libs/datatables.net-buttons/js/dataTables.buttons.min.js' %}"></script>
+    <script src="{% static 'switchblade_dashboard/libs/datatables.net-buttons/js/buttons.html5.min.js' %}"></script>
+    <script src="{% static 'switchblade_dashboard/libs/datatables.net-buttons/js/buttons.print.min.js' %}"></script>
+    <script src="{% static 'switchblade_dashboard/libs/pdfmake/build/pdfmake.min.js' %}"></script>
+    <script src="{% static 'switchblade_dashboard/libs/pdfmake/build/vfs_fonts.js' %}"></script>
+    <script src="{% static 'switchblade_dashboard/libs/jszip/dist/jszip.min.js' %}"></script>
+    <script>
+        $(document).ready(function () {
+            $('table.table').DataTable({
+                "scrollX": true,
+                dom: '<"box-header"<"table_header"B><"table_header"f><"table_header"l><"table_header"i>>rt<"table_header"p>p',
+                paging: false,
+                select: true,
+                order: [],
+                buttons: [
+                    {
+                        extend: 'copy',
+                        text: 'Copy to clipboard',
+                        className: 'btn btn-sm btn-default',
+                        title: null
+                    },
+                    {
+                        extend: 'csv',
+                        text: 'Export to CSV',
+                        className: 'btn btn-sm btn-default',
+                        title: null
+                    },
+                    {
+                        extend: 'excel',
+                        text: 'Export to Excel',
+                        className: 'btn btn-sm btn-default',
+                        title: null
+                    },
+                    {
+                        extend: 'pdf',
+                        text: 'Export to PDF',
+                        className: 'btn btn-sm btn-default',
+                        orientation: 'landscape',
+                        title: null
+                    },
+                    {
+                        extend: 'print',
+                        text: 'Print',
+                        className: 'btn btn-sm btn-default',
+                        title: null
+                    }
+                ]
+            });
+        });
+    </script>
+{% endblock extraJS %}
+

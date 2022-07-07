@@ -1,0 +1,38 @@
+{% load i18n %}
+<div class="input-group">
+    <div class="input-group-addon">
+        <i class="fa fa-calendar"></i>
+    </div>
+    <input type="{{ widget.type }}"
+           name="{{ widget.name }}"
+            {% if widget.value != None %}
+           value="{{ widget.value|stringformat:'s' }}"
+            {% endif %}
+           class="form-control pull-right date-input"
+           placeholder={% trans "Click to select date" %}
+           autocomplete="off"
+            {% include "django/forms/widgets/attrs.html" %}>
+</div>
+
+{% if not widget.attrs.ignore_js %}
+    <script>
+        $(function () {
+            $('#{{ widget.attrs.id }}').daterangepicker({
+                singleDatePicker: true,
+                showDropdowns: true,
+                autoUpdateInput: false,
+                autoApply: false,
+                locale: {
+                    format: 'YYYY-MM-DD'
+                },
+            });
+        });
+        $('#{{ widget.attrs.id }}').on('apply.daterangepicker', function (ev, picker) {
+            $(this).val(picker.startDate.format('YYYY-MM-DD'));
+        });
+
+        $('#{{ widget.attrs.id }}').on('cancel.daterangepicker', function (ev, picker) {
+            $(this).val('');
+        });
+    </script>
+{% endif %}

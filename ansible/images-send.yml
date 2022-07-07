@@ -1,0 +1,6 @@
+- hosts:
+    - bridge-server
+  become:
+  become_method: sudo
+  roles:
+    - docker-images-send

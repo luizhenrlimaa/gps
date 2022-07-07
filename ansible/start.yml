@@ -1,0 +1,10 @@
+#
+# Start Swarm
+#
+
+- hosts:
+    - bridge-server
+  become: yes
+  become_method: sudo
+  roles:
+    - swarm-start

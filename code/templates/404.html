@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+{% load i18n %}
+<html lang='en' class=''>
+<head>
+    <title>Page not found</title>
+    <style class="cp-pen-styles">body {
+        background: #62c8e8; /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #144995, #62c8e8); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #144995, #62c8e8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+
+
+    .box {
+        margin-top: 8%;
+        margin-left: 15%;
+    }
+
+    .text-404 {
+        color: #f2f2f2;
+    }
+
+    .head {
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: 400;
+        font-size: 60px;
+        margin-bottom: 0;
+    }
+
+    .sub {
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: 100;
+        font-size: 20px;
+        color: #eaeaea;
+    }
+
+    a {
+        color: #ffffff;
+        text-decoration-line: none;
+        font-weight: bold;
+    }
+
+    a:hover {
+        color: #ffffff;
+        text-decoration-line: underline;
+    }
+
+    .sublow {
+        font-family: 'Raleway', sans-serif;
+        font-size: 13px;
+    }</style>
+</head>
+<body>
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900|Ubuntu:300,400,500,700"
+          rel="stylesheet">
+</head>
+<div class="box">
+    <br><br>
+    <div class="text-404">
+        <h2 class="head">{% trans "PAGE NOT FOUND (404)" %}</h2>
+        <h4 class="sub">{% trans "This page doesn't exist." %}</h4>
+        <p class="sublow"><a href="javascript:history.back();">{% trans "Click here to go back!" %}</a><br><br>{% trans "Feel free to" %}<a href="https://jira.inatel.br/jira/servicedesk/customer/portal/12" target="_blank">{% trans "contact us" %}</a> {% trans "if the problems persists." %}
+        </p>
+        </p>
+    </div>
+</div>
+
+</body>
+</html>

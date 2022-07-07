@@ -1,0 +1,36 @@
+{% load dashboard_tag %}
+
+<div class="form-group {% if field.errors %} has-error {% endif %}">
+    <label for="{{ field.id_for_label }}" class="col-sm-2 control-label">
+        {{ field.label }}{% if field.field.required %}
+        <span class="asteriskField">*</span>
+        {% endif %}
+    </label>
+    <div class="col-sm-10">
+        {% if field.form.Meta.extra_info|get_item:field.name|get_item:'before' %}
+            <b> {{ field.form.Meta.extra_info|get_item:field.name|get_item:'before' }} </b>
+        {% endif %}
+        {% if field.field.widget.input_type == 'radio' %}
+            {% for radio in field %}
+                {{ radio }}
+            {% endfor %}
+        {% elif field|field_type == 'booleanfield' %}
+            {{ field }}
+        {% elif field|widget_type == 'modelselect2multiple' %}
+            {{ field }}
+        {% else %}
+            {{ field|add_class:'form-control' }}
+        {% endif %}
+
+        {% if field.form.Meta.extra_info|get_item:field.name|get_item:'after' %}
+            <b> {{ field.form.Meta.extra_info|get_item:field.name|get_item:'after' }}</b>
+        {% endif %}
+
+        {% if field.help_text %}
+            <p class="help-block">{{ field.help_text }}</p>
+        {% endif %}
+        {% for error in field.errors %}
+            <span class="help-block">{{ error }}</span>
+        {% endfor %}
+    </div>
+</div>

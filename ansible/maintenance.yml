@@ -1,0 +1,15 @@
+
+- hosts:
+    - django-server
+  become: yes
+  become_method: sudo
+  roles:
+    - role: maintenance-mode-on
+      tags:
+        - turn-on
+    - role: maintenance-mode-off
+      tags:
+        - turn-off
+
+
+

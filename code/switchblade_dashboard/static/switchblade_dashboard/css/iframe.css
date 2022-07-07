@@ -1,0 +1,24 @@
+
+#iframe-loading {
+    font-size: 60px;
+    left: 50%;
+    top: calc(50% - 30px);
+    position: absolute;
+    z-index: 9999;
+}
+
+.inner-page {
+    height: -webkit-fill-available;
+    height: -moz-fill-available;
+    height: -ms-fill-available;
+    height: -o-fill-available;
+    height: fill-available;
+
+    width: -webkit-fill-available;
+    width: -moz-fill-available;
+    width: -ms-fill-available;
+    width: -o-fill-available;
+    width: fill-available;
+
+    border: 0;
+}

@@ -1,0 +1,25 @@
+  - pause:
+      prompt: "Inform git hotfix tag (vRDC-XXX) or (vX.X.X)"
+      echo: yes
+    register: hotfix_tag
+
+  - name: Get changed files
+    command: "git diff {{ release }} {{ hotfix_tag.user_input }} --diff-filter=ACMR --name-only"
+    register: modified_files
+
+  - name: Clear local temp repo
+    file:
+      path: "{{ local_temp_repo_path }}"
+      state: absent
+
+  - name: Create temp repo folder
+    file:
+      path: "{{ local_temp_repo_path }}"
+      state: directory
+      mode: 0775
+
+  - name: Clone project release in temp folder
+    git:
+      repo: "{{ local_repository }}"
+      dest: "{{ local_temp_repo_path }}"
+      version: "{{ hotfix_tag.user_input }}"

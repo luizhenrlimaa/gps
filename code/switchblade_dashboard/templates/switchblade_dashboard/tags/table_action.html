@@ -1,0 +1,28 @@
+{% load i18n %}
+{% load dashboard_tag %}
+
+{% if list_data.ButtonDetail or list_data.ButtonUpdate or list_data.ButtonDelete %}
+    <div class="btn-group-xs text-center text-nowrap">
+        {% if list_data.ButtonDetail and record.get_absolute_url and request.user|has_resource_permission:list_data.DetailResource %}
+            <a href="{{ record.get_absolute_url }}{% if request.META.QUERY_STRING %}?{{ request.META.QUERY_STRING }}{% endif %}" class="btn btn-info btn-table-info">
+                <i class="fa fa-search" title="{% trans "View details" %}"></i>
+            </a>
+        {% endif %}
+        {% if list_data.ButtonUpdate and record.get_update_url and request.user|has_resource_permission:list_data.UpdateResource %}
+            <a href="{{ record.get_update_url }}{% if request.META.QUERY_STRING %}?{{ request.META.QUERY_STRING }}{% endif %}" class="btn btn-warning btn-table-warning">
+                <i class="fa fa-pencil" title="{% trans "Update" %}"></i>
+            </a>
+        {% endif %}
+        {% if list_data.ButtonDelete and record.get_delete_url and request.user|has_resource_permission:list_data.DeleteResource %}
+            <button data-toggle="modal"
+                    data-target="#deleteModal"
+                    data-obj="{{ record }}"
+                    data-action="{{ record.get_delete_url }}{% if request.META.QUERY_STRING %}?{{ request.META.QUERY_STRING }}{% endif %}"
+                    class="btn btn-danger btn-table-danger">
+                <i class="fa fa-close"></i>
+            </button>
+        {% endif %}
+    </div>
+{% else %}
+    <span>—</span>
+{% endif %}

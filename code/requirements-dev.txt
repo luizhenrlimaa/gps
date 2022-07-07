@@ -1,0 +1,13 @@
+mkdocs
+mkdocs-material
+mkdocs-encryptcontent-plugin
+sphinx
+sphinx-material
+pymdown-extensions
+pygments
+django-silk
+coverage
+django_coverage_plugin
+pytest-django
+pytest-cov
+../bin/GDAL-2.4.1-cp37-cp37m-win_amd64.whl

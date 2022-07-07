@@ -1,0 +1,61 @@
+:root {
+
+    --main-color: #FFF;
+    --main-dark-color: #E5E5E5;
+    --main-light-color: #F3F3F3;
+    --font-color: #444;
+    --font-light-color: #FFF; /*#6C757D*/
+
+    --secondary-color: #3C3C3C;
+    --secondary-dark-color: #353535;
+    --secondary-light-color: #4C4C4C;
+    --secondary-font-color: #B0B0B0;
+    --secondary-font-dark-color: #4C4C4C;
+    --secondary-font-light-color: #FCFCFC;
+
+    --third-color: #00508b;
+
+    --background-color: #ECF0F5;
+    --background-color-dark: #D2D6DE;
+
+    --scrollbar-color: #CECECE;
+    --scrollbar-dark-color: #00508b;
+    --scrollbar-light-color: #F5F3F3;
+
+    --white: #FFF;
+    --green: #28A745;
+    --yellow: #FFC107;
+    --red: #DC3545;
+    --gray: #6C757D;
+    --maroon: #CD4174;
+    --blue: #337AB7;
+    --black: #444;
+    --aqua: #00C0EF;
+
+    --success-color: #149E5F;
+    --facing-problems-color: #E35241;
+    --in-progress-color: #5B5B5B;
+    --failed-color: #E35241;
+    --warning-color: #E4AB46;
+    --cancelled-color: #B6B9BD;
+    --postponed-color: #B6B9BD;
+    --done-color: #05BB05;
+    --initial-color: #444;
+    --initial-dependent-color: #B6B9BD;
+    --info-color: #2DB3D5;
+    --info-dark-color: #3C8DBC;
+
+    --dev-env-color: #149E5F;
+    --dev-env-dark-color: #118551;
+    --dev-env-light-color: #16AB68;
+    --dev-env-font-color: #DEEFE8;
+    --dev-env-font-dark-color: #2ACF82;
+    --dev-env-font-light-color: #E4f4E8;
+
+    --staging-env-color: #E4AB46;
+    --staging-env-dark-color: #D9961E;
+    --staging-env-light-color: #F6BD5A;
+    --staging-env-font-color: #EDEAD7;
+    --staging-env-font-dark-color: #FFCA6D;
+    --staging-env-font-light-color: #F7EFDF;
+}

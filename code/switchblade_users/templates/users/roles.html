@@ -1,0 +1,104 @@
+{% extends "switchblade_dashboard/base.html" %}
+{% load dashboard_tag %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load i18n %}
+
+{% block extraHead %}
+    <link rel="stylesheet" href="{% static 'switchblade_users/css/tree.css' %}">
+{% endblock %}
+
+{% block title %}
+    Roles
+{% endblock %}
+
+{% block content_title %}
+    Roles
+{% endblock %}
+
+{% block content_main %}
+    <form method="POST" action="" enctype="multipart/form-data" id="selected_data_form">
+        <div class="box box-default">
+            <div class="box-header with-border">
+                <h3 class="box-title">{{ description }}</h3>
+            </div>
+            <div class="box-body">
+                <div class="form-horizontal">
+                    {% crispy role_form helper %}
+                </div>
+            </div>
+        </div>
+        <div class="box box-default">
+            <div class="box-header with-border">
+                <h3 class="box-title">{% trans "Available resources" %}</h3>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div id="resources_tree" class="col-md-6 pad">
+                        <twig :nodes="treeData"
+                              :id="0.1"
+                              :description="'Resources'"
+                              :name="'*'"
+                              :depth="0"
+                              :selected="true">
+                        </twig>
+                    </div>
+                    <div id="menu_tree" class="col-md-6 pad">
+                        <twig :nodes="treeData"
+                              :id="0.2"
+                              :description="'Menu'"
+                              :name="'menu.*'"
+                              :depth="0"
+                              :selected="true">
+                        </twig>
+                    </div>
+                </div>
+            </div>
+            <div class="box-footer">
+                <a href="javascript:history.back();" class="btn btn-default">{% trans "Back" %}</a>
+                <div class="btn-group pull-right">
+                    <input type="hidden" name="id" value="{{ id }}">
+                    {% csrf_token %}
+                    <input type="hidden" name="selected_data" value="" id="selected_data">
+                    <button type="submit" class="btn bg-green">{% trans "Save" %}</button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <script type="text/x-template" id="twig">
+        <div>
+            <div @change="on_change()">
+                <div :style="indent">
+                    <label class="container">
+                        <span> [[ description ]] </span>
+                        <span class="checkbox-description">([[ name ]])</span>
+                        <input :id="id" type="checkbox" :checked="selected">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </div>
+            <twig v-for="node in nodes"
+                  :key="node.id"
+                  :nodes="node.children"
+                  :id="node.id"
+                  :name="node.name"
+                  :parents="node.parents"
+                  :description="node.description"
+                  :selected="node.selected"
+                  :depth="depth + 1">
+            </twig>
+        </div>
+    </script>
+{% endblock content_main %}
+
+{% block extraJS %}
+    <script src="{% static 'switchblade_users/vue_libs/tree.js' %}"></script>
+    <script>
+        $(function initiate_tree_checkbox_view() {
+            menu_tree.treeData = {{ menu_tree|safe }};
+            resources_tree.treeData = {{ resources_tree|safe }};
+            selectedData = {{ selected_data|safe }};
+        });
+    </script>
+{% endblock extraJS %}

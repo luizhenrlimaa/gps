@@ -1,0 +1,116 @@
+.index-widget.box {
+    margin-bottom: 0px !important;
+    border-top: 0 !important;
+}
+
+.index-widget .widget-user-2 .widget-user-header {
+    padding: 10px !important;
+    border-top-right-radius: 0px !important;
+    border-top-left-radius: 0px !important;
+    padding-left: 35px;
+    height: 82px;
+    overflow: hidden;
+    background: #ddd;
+}
+
+.index-widget .widget-user-2 .widget-user-username, .widget-user-2 .widget-user-desc {
+    margin-left: 96px;
+}
+
+.index-widget .widget-user-image {
+    padding-left: 13px;
+}
+
+.index-widget .info-box-icon {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border: 0 !important;
+    background-color: #DD4B39;
+    height: 80px;
+    width: 80px;
+    line-height: 82px;
+    position: absolute;
+    top: 12px;
+    border: 1px solid #ddd;
+    z-index: 100;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+.box-footer {
+    margin-bottom: 20px;
+}
+
+.index-widget .nav {
+    margin-top: 8px;
+}
+
+.index-widget .nav-stacked>li {
+    border-bottom: 1px solid #EEE;
+    color: #3c8dbc !important;
+}
+
+.index-widget .item-icon {
+    padding-left: 8px;
+    padding-right: 10px;
+    color: #444;
+}
+
+/* ---------- */
+/* Info icons
+/* ---------- */
+
+.index-widget .item-data.info {
+    cursor:help;
+}
+
+.index-widget .nav .item-data {
+    padding-left: 4px;
+    font-size: 1.4em;
+}
+
+.index-widget .nav .item-data.info {
+    color: #DDD;
+    cursor:help;
+}
+
+.index-widget .nav .item-data.info:hover {
+    color: #333;
+}
+
+.index-widget .nav .item-data.new {
+    color: gold;
+}
+
+.index-widget .nav {
+    margin-top: 0;
+}
+
+.index-widget .info-box-icon {
+    top: 0;
+    left: 0;
+    height: 75px;
+    width: 75px;
+    line-height: 75px;
+}
+
+.index-widget .widget-user-2 .widget-user-header {
+    padding-top: 0 !important;
+    padding-left: 0;
+    height: 75px;
+}
+
+.index-widget .widget-user-2 .widget-user-username, .widget-user-2 .widget-user-desc {
+    margin-left: 82px;
+}
+
+.widget-user-2 .widget-user-username {
+    font-size: 27px;
+}
+
+a .widget-user-username {
+    color: #444;
+}
+
+a .widget-user-image {
+    color: #fff;
+}

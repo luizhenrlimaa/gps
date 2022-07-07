@@ -1,0 +1,9 @@
+{% extends "switchblade_dashboard/base.html" %}
+{% load dashboard_tag %}
+{% load staticfiles %}
+
+{% block content_main %}
+    <div class="row">
+        <div class="col-md-6">{{ charts.graph_1|safe }}</div>
+    </div>
+{% endblock %}

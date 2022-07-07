@@ -1,0 +1,5 @@
+- hosts: bridge-server
+  become:
+  become_method: sudo
+  roles:
+    - code-send

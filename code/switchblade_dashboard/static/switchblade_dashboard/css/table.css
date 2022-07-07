@@ -1,0 +1,33 @@
+#v-table thead, #management-queue tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+#v-table tbody {
+    display: block;
+    max-height: 100vh;
+    overflow-y: overlay;
+    overflow-x: hidden;
+}
+
+#v-table td.table-loading {
+    width: 100%;
+    background: rgba(255,255,255,0.7);
+    border-radius: 3px;
+    left: 50%;
+    z-index: 9999;
+}
+
+#v-table td.table-loading i {
+    margin-left: 50%;
+    margin-right: auto;
+    color: #000;
+    font-size: 30px;
+}
+
+#v-table .btn-group-xs button {
+    height: 23px;
+    width: 23px;
+    margin: 2.5px 2px 0px 2px;
+}

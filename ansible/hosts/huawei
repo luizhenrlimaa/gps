@@ -1,0 +1,21 @@
+[docker-managers]
+10.226.123.32 ansible_ssh_user=root ansible_ssh_port=5559
+10.226.124.75 ansible_ssh_user=root ansible_ssh_port=5559
+
+[docker-workers]
+10.226.123.43 ansible_ssh_user=root ansible_ssh_port=5559
+10.226.122.71 ansible_ssh_user=root ansible_ssh_port=5559
+10.226.124.203 ansible_ssh_user=root ansible_ssh_port=5559
+10.226.122.129 ansible_ssh_user=root ansible_ssh_port=5559
+
+[local-host]
+localhost ansible_connection=local
+
+[bridge-server]
+10.226.123.32 ansible_ssh_user=root ansible_ssh_port=5559
+
+[huawei:children]
+docker-managers
+docker-workers
+local-host
+bridge-server

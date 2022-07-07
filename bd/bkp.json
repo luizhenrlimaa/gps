@@ -1,0 +1,1299 @@
+[
+{
+    "model": "switchblade_users.role",
+    "pk": 1,
+    "fields": {
+        "description": "Aluno",
+        "active": true
+    }
+},
+{
+    "model": "switchblade_users.role",
+    "pk": 2,
+    "fields": {
+        "description": "Secretria",
+        "active": true
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 1,
+    "fields": {
+        "role": 1,
+        "resource": 1
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 3,
+    "fields": {
+        "role": 1,
+        "resource": 3
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 5,
+    "fields": {
+        "role": 1,
+        "resource": 10
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 6,
+    "fields": {
+        "role": 1,
+        "resource": 64
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 7,
+    "fields": {
+        "role": 1,
+        "resource": 8
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 8,
+    "fields": {
+        "role": 1,
+        "resource": 43
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 9,
+    "fields": {
+        "role": 1,
+        "resource": 44
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 10,
+    "fields": {
+        "role": 1,
+        "resource": 45
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 11,
+    "fields": {
+        "role": 1,
+        "resource": 46
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 12,
+    "fields": {
+        "role": 1,
+        "resource": 47
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 13,
+    "fields": {
+        "role": 1,
+        "resource": 48
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 14,
+    "fields": {
+        "role": 1,
+        "resource": 49
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 15,
+    "fields": {
+        "role": 1,
+        "resource": 50
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 16,
+    "fields": {
+        "role": 1,
+        "resource": 51
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 17,
+    "fields": {
+        "role": 1,
+        "resource": 52
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 18,
+    "fields": {
+        "role": 1,
+        "resource": 53
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 19,
+    "fields": {
+        "role": 1,
+        "resource": 54
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 20,
+    "fields": {
+        "role": 1,
+        "resource": 55
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 28,
+    "fields": {
+        "role": 2,
+        "resource": 1
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 29,
+    "fields": {
+        "role": 2,
+        "resource": 2
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 30,
+    "fields": {
+        "role": 2,
+        "resource": 71
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 31,
+    "fields": {
+        "role": 2,
+        "resource": 8
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 32,
+    "fields": {
+        "role": 2,
+        "resource": 72
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 33,
+    "fields": {
+        "role": 2,
+        "resource": 74
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 34,
+    "fields": {
+        "role": 2,
+        "resource": 75
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 35,
+    "fields": {
+        "role": 2,
+        "resource": 73
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 36,
+    "fields": {
+        "role": 2,
+        "resource": 77
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 41,
+    "fields": {
+        "role": 2,
+        "resource": 76
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 42,
+    "fields": {
+        "role": 1,
+        "resource": 65
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 43,
+    "fields": {
+        "role": 1,
+        "resource": 66
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 44,
+    "fields": {
+        "role": 1,
+        "resource": 67
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 45,
+    "fields": {
+        "role": 1,
+        "resource": 68
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 46,
+    "fields": {
+        "role": 1,
+        "resource": 69
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 47,
+    "fields": {
+        "role": 1,
+        "resource": 70
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 52,
+    "fields": {
+        "role": 2,
+        "resource": 65
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 53,
+    "fields": {
+        "role": 2,
+        "resource": 66
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 66,
+    "fields": {
+        "role": 1,
+        "resource": 134
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 68,
+    "fields": {
+        "role": 1,
+        "resource": 144
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 69,
+    "fields": {
+        "role": 1,
+        "resource": 2
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 70,
+    "fields": {
+        "role": 1,
+        "resource": 146
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 71,
+    "fields": {
+        "role": 2,
+        "resource": 145
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 72,
+    "fields": {
+        "role": 2,
+        "resource": 147
+    }
+},
+{
+    "model": "switchblade_users.rolepermission",
+    "pk": 73,
+    "fields": {
+        "role": 1,
+        "resource": 148
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 1,
+    "fields": {
+        "name": "menu.dashboard.*",
+        "description": "Dashboard",
+        "menu_type": true,
+        "order": 1
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 2,
+    "fields": {
+        "name": "menu.registros.*",
+        "description": "Registros",
+        "menu_type": true,
+        "order": 55
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 3,
+    "fields": {
+        "name": "menu.certificados.*",
+        "description": "Gest\u00e3o Certificado",
+        "menu_type": true,
+        "order": 66
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 8,
+    "fields": {
+        "name": "menu.dashboard.index",
+        "description": "Dashboard Index",
+        "menu_type": true,
+        "order": 10
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 9,
+    "fields": {
+        "name": "menu.registros.categoria.*",
+        "description": "Categoria",
+        "menu_type": true,
+        "order": 5502
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 10,
+    "fields": {
+        "name": "menu.certificados.certificados.*",
+        "description": "Categoria",
+        "menu_type": true,
+        "order": 6602
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 11,
+    "fields": {
+        "name": "user.list",
+        "description": "Users",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 12,
+    "fields": {
+        "name": "user.*",
+        "description": "user.*",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 13,
+    "fields": {
+        "name": "user.export",
+        "description": "Users Export",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 14,
+    "fields": {
+        "name": "user.template",
+        "description": "Users Template Import/Export",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 15,
+    "fields": {
+        "name": "user.create",
+        "description": "New user",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 16,
+    "fields": {
+        "name": "user.detail",
+        "description": "User detail",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 17,
+    "fields": {
+        "name": "user.update",
+        "description": "Edit user",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 18,
+    "fields": {
+        "name": "user.delete",
+        "description": "Page Header",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 19,
+    "fields": {
+        "name": "role.list",
+        "description": "Roles",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 20,
+    "fields": {
+        "name": "role.*",
+        "description": "role.*",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 21,
+    "fields": {
+        "name": "role.export",
+        "description": "Roles Export",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 22,
+    "fields": {
+        "name": "role.create",
+        "description": "Create new Role",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 23,
+    "fields": {
+        "name": "role.detail",
+        "description": "Role detail",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 24,
+    "fields": {
+        "name": "role.update",
+        "description": "Update Roles",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 25,
+    "fields": {
+        "name": "role.delete",
+        "description": "Delete role",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 26,
+    "fields": {
+        "name": "auditlog.list",
+        "description": "Audit log list",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 27,
+    "fields": {
+        "name": "auditlog.*",
+        "description": "auditlog.*",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 28,
+    "fields": {
+        "name": "auditlog.export",
+        "description": "Audit log list Export",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 29,
+    "fields": {
+        "name": "categoria.list",
+        "description": "Categoria",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 30,
+    "fields": {
+        "name": "categoria.*",
+        "description": "categoria.*",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 31,
+    "fields": {
+        "name": "categoria.export",
+        "description": "Categoria Export",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 32,
+    "fields": {
+        "name": "categoria.create",
+        "description": "Cadastro de Categoria",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 33,
+    "fields": {
+        "name": "categoria.detail",
+        "description": "Categoria",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 34,
+    "fields": {
+        "name": "categoria.update",
+        "description": "Edi\u00e7\u00e3o de Categoria",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 35,
+    "fields": {
+        "name": "categoria.delete",
+        "description": "Remo\u00e7\u00e3o de Categoria",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 36,
+    "fields": {
+        "name": "atividade.list",
+        "description": "Atividade",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 37,
+    "fields": {
+        "name": "atividade.*",
+        "description": "atividade.*",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 38,
+    "fields": {
+        "name": "atividade.export",
+        "description": "Atividade Export",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 39,
+    "fields": {
+        "name": "atividade.create",
+        "description": "Cadastro de Atividade",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 40,
+    "fields": {
+        "name": "atividade.detail",
+        "description": "Atividade",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 41,
+    "fields": {
+        "name": "atividade.update",
+        "description": "Edi\u00e7\u00e3o de Atividade",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 42,
+    "fields": {
+        "name": "atividade.delete",
+        "description": "Remo\u00e7\u00e3o de Atividade",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 43,
+    "fields": {
+        "name": "certificado.list",
+        "description": "Certificado",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 44,
+    "fields": {
+        "name": "certificado.*",
+        "description": "certificado.*",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 45,
+    "fields": {
+        "name": "certificado.export",
+        "description": "Certificado Export",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 46,
+    "fields": {
+        "name": "certificado.create",
+        "description": "Cadastro de Certificado",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 47,
+    "fields": {
+        "name": "certificado.detail",
+        "description": "Certificado",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 48,
+    "fields": {
+        "name": "certificado.update",
+        "description": "Edi\u00e7\u00e3o de Certificado",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 49,
+    "fields": {
+        "name": "certificado.delete",
+        "description": "Remo\u00e7\u00e3o de Certificado",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 50,
+    "fields": {
+        "name": "menu.profile.*",
+        "description": "Profile",
+        "menu_type": true,
+        "order": 33
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 51,
+    "fields": {
+        "name": "menu.profile.user.*",
+        "description": "User",
+        "menu_type": true,
+        "order": 3301
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 52,
+    "fields": {
+        "name": "menu.profile.user.personal_info",
+        "description": "Personal Info",
+        "menu_type": true,
+        "order": 330101
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 53,
+    "fields": {
+        "name": "menu.profile.user.password",
+        "description": "Change Password",
+        "menu_type": true,
+        "order": 330101
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 54,
+    "fields": {
+        "name": "menu.profile.user.password_done",
+        "description": "Change Password Done",
+        "menu_type": true,
+        "order": 330102
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 55,
+    "fields": {
+        "name": "menu.profile.user.avatar",
+        "description": "Avatar",
+        "menu_type": true,
+        "order": 330103
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 56,
+    "fields": {
+        "name": "menu.config.*",
+        "description": "Configuration",
+        "menu_type": true,
+        "order": 44
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 57,
+    "fields": {
+        "name": "menu.config.audit.*",
+        "description": "Audit",
+        "menu_type": true,
+        "order": 4402
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 58,
+    "fields": {
+        "name": "menu.config.audit.log",
+        "description": "Audit log",
+        "menu_type": true,
+        "order": 440201
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 59,
+    "fields": {
+        "name": "menu.config.users.*",
+        "description": "Authorization",
+        "menu_type": true,
+        "order": 4403
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 60,
+    "fields": {
+        "name": "menu.config.users.users",
+        "description": "Users",
+        "menu_type": true,
+        "order": 44
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 61,
+    "fields": {
+        "name": "menu.config.users.roles",
+        "description": "User Roles",
+        "menu_type": true,
+        "order": 4403
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 62,
+    "fields": {
+        "name": "menu.registros.categoria.categorias",
+        "description": "Categoria",
+        "menu_type": true,
+        "order": 550201
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 63,
+    "fields": {
+        "name": "menu.registros.categoria.atividade",
+        "description": "Atividade",
+        "menu_type": true,
+        "order": 550202
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 64,
+    "fields": {
+        "name": "menu.certificados.certificados.meus_certificados",
+        "description": "Meus Certificados",
+        "menu_type": true,
+        "order": 660201
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 65,
+    "fields": {
+        "name": "submicao.list",
+        "description": "Submissao Secretaria",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 66,
+    "fields": {
+        "name": "submicao.*",
+        "description": "submicao.*",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 67,
+    "fields": {
+        "name": "submicao.export",
+        "description": "Submissao Secretaria Export",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 68,
+    "fields": {
+        "name": "submicao.detail",
+        "description": "Submicao",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 69,
+    "fields": {
+        "name": "submicao.update",
+        "description": "Edi\u00e7\u00e3o de Submicao",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 70,
+    "fields": {
+        "name": "submicao.delete",
+        "description": "Remo\u00e7\u00e3o de Submicao",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 71,
+    "fields": {
+        "name": "submissaoresponse.list",
+        "description": "Resposta da Submiss\u00e3o",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 72,
+    "fields": {
+        "name": "submissaoresponse.*",
+        "description": "submissaoresponse.*",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 73,
+    "fields": {
+        "name": "submissaoresponse.export",
+        "description": "Resposta da Submiss\u00e3o Export",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 74,
+    "fields": {
+        "name": "submissaoresponse.create",
+        "description": "Cadastro de Resposta da Submissao",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 75,
+    "fields": {
+        "name": "submissaoresponse.detail",
+        "description": "Resposta da Submissao",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 76,
+    "fields": {
+        "name": "submissaoresponse.update",
+        "description": "Edi\u00e7\u00e3o de Resposta da Submissao",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 77,
+    "fields": {
+        "name": "submissaoresponse.delete",
+        "description": "Remo\u00e7\u00e3o de Resposta da Submissao",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 82,
+    "fields": {
+        "name": "aluno.list",
+        "description": "Aluno",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 83,
+    "fields": {
+        "name": "aluno.*",
+        "description": "aluno.*",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 84,
+    "fields": {
+        "name": "aluno.export",
+        "description": "Aluno Export",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 85,
+    "fields": {
+        "name": "aluno.create",
+        "description": "Cadastro de Aluno",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 86,
+    "fields": {
+        "name": "aluno.detail",
+        "description": "Aluno",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 87,
+    "fields": {
+        "name": "aluno.update",
+        "description": "Edi\u00e7\u00e3o de Aluno",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 88,
+    "fields": {
+        "name": "aluno.delete",
+        "description": "Remo\u00e7\u00e3o de Aluno",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 89,
+    "fields": {
+        "name": "menu.config.users.alunos",
+        "description": "Alunos",
+        "menu_type": true,
+        "order": 4404
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 134,
+    "fields": {
+        "name": "menu.sub.*",
+        "description": "Solicita\u00e7\u00e3o",
+        "menu_type": true,
+        "order": 77
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 144,
+    "fields": {
+        "name": "menu.registros.aluno.*",
+        "description": "Solicita\u00e7\u00f5es Aluno",
+        "menu_type": true,
+        "order": 5504
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 145,
+    "fields": {
+        "name": "menu.registros.secretaria.*",
+        "description": "Solicita\u00e7\u00f5es Secretaria",
+        "menu_type": true,
+        "order": 5505
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 146,
+    "fields": {
+        "name": "menu.registros.aluno.solicitacoes",
+        "description": "Minhas Solicita\u00e7\u00f5es",
+        "menu_type": true,
+        "order": 550401
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 147,
+    "fields": {
+        "name": "menu.registros.secretaria.abertas",
+        "description": "Solicita\u00e7\u00f5es Abertas",
+        "menu_type": true,
+        "order": 770502
+    }
+},
+{
+    "model": "switchblade_users.userresource",
+    "pk": 148,
+    "fields": {
+        "name": "submicao.create",
+        "description": "submissao create",
+        "menu_type": false,
+        "order": 0
+    }
+},
+{
+    "model": "switchblade_users.user",
+    "pk": 1,
+    "fields": {
+        "first_name": "admin",
+        "last_name": "admin",
+        "email": "admin@admin.com",
+        "phone": null,
+        "password": "pbkdf2_sha256$150000$NN5gK8hRlujh$97Ta13GGOcOR6rn1q9OinjcWpy5mceG+fRHI/XcxYOw=",
+        "last_login": "2021-10-06T21:25:52.734Z",
+        "creation_date": "2021-08-02T14:58:32.673Z",
+        "is_active": true,
+        "is_staff": true,
+        "is_admin": true,
+        "avatar": "avatars/1.png",
+        "groups": [],
+        "user_permissions": [],
+        "roles": [],
+        "individual_permissions": []
+    }
+},
+{
+    "model": "switchblade_users.user",
+    "pk": 4,
+    "fields": {
+        "first_name": "Aluno",
+        "last_name": "De SI",
+        "email": "aluno@ufvjm.edu",
+        "phone": null,
+        "password": "pbkdf2_sha256$150000$6WO9jmeEscnX$o6nvLWGki8RjoY78POFNeyjGworpdVazAgnBipmHX+M=",
+        "last_login": "2021-09-17T02:25:01.381Z",
+        "creation_date": "2021-08-06T17:17:46.655Z",
+        "is_active": true,
+        "is_staff": false,
+        "is_admin": false,
+        "avatar": "",
+        "groups": [],
+        "user_permissions": [],
+        "roles": [
+            1
+        ],
+        "individual_permissions": []
+    }
+},
+{
+    "model": "switchblade_users.user",
+    "pk": 5,
+    "fields": {
+        "first_name": "Secretaria",
+        "last_name": "de SI",
+        "email": "secretaria@ufvjm.edu",
+        "phone": null,
+        "password": "pbkdf2_sha256$150000$ZPSpPMA5Pc94$dxXSjyhd6sjamcb1R1fxtZ3UGNDK+fHdZy+Wi/D1OgE=",
+        "last_login": "2021-09-17T02:27:37.024Z",
+        "creation_date": "2021-08-06T17:20:41.652Z",
+        "is_active": true,
+        "is_staff": false,
+        "is_admin": false,
+        "avatar": "",
+        "groups": [],
+        "user_permissions": [],
+        "roles": [
+            2
+        ],
+        "individual_permissions": []
+    }
+}
+]

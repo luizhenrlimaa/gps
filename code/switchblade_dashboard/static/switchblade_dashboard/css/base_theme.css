@@ -1,0 +1,595 @@
+
+.main-header .navbar, .main-header .logo, .box, .box-footer, .box-tabs-content .tab-content .tab-pane, .modal-body,
+.nav-tabs-custom>.nav-tabs>li.active>a, .nav-tabs-custom>.nav-tabs>li.active:hover>a, .table .table, .form-control,
+.modal-footer {
+    background-color: var(--main-color) !important;
+    color: var(--font-color) !important;
+}
+
+.box.celery {
+    background-color: transparent !important;
+    color: var(--font-color) !important;
+}
+
+.table-bordered>thead>tr>th, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td,
+.table-bordered>tbody>tr>td, .table-bordered>tfoot>tr>td, .box-header.with-border {
+    border-bottom: 1px solid var(--main-light-color) !important;
+    color: var(--font-color) !important;
+}
+
+.btn-default {
+    background-color: var(--main-light-color) !important;
+    color: var(--font-color) !important;
+    border-color: var(--main-dark-color) !important;
+}
+
+.index-widget .nav-stacked>li {
+    border-bottom: 1px solid var(--main-light-color) !important;
+    color: var(--font-color) !important;
+}
+
+.index-widget .widget-user-2 .widget-user-header {
+    background-color: var(--main-dark-color) !important;
+    color: var(--font-color) !important;
+}
+
+.box-footer, .modal-footer {
+    border-top: 1px solid var(--main-light-color) !important;
+    color: var(--font-color) !important;
+}
+
+.nav-tabs-custom>.nav-tabs>li.active>a {
+    border-left-color: var(--main-light-color) !important;
+    border-right-color: var(--main-light-color) !important;
+}
+
+.table-hover>tbody>tr:hover {
+    background-color: var(--main-light-color) !important;
+}
+
+.table-bordered>thead>tr>th, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td,
+.table-bordered>tbody>tr>td, .table-bordered>tfoot>tr>td, .table-bordered, .table-striped>tbody>tr {
+    border-color: var(--main-light-color) !important;
+}
+
+.form-control {
+    border-color: var(--main-dark-color) !important;
+    color: var(--font-color) !important;
+}
+
+.main-header {
+    border-bottom: 2px solid var(--third-color) !important;
+    color: var(--font-color) !important;
+}
+
+.content, .content-wrapper, .content-header, .bg-modal-wrapper {
+    background: var(--background-color) !important;
+}
+
+.main-header .navbar .nav.active a {
+    background: var(--main-dark-color) !important;
+}
+
+.main-header .navbar .nav a:hover, .main-header .navbar .nav.active a:hover {
+    background: var(--main-light-color);
+}
+
+.stripped:nth-child(odd), .table-striped>tbody>tr:nth-of-type(even) {
+    background-color: var(--main-color) !important;
+}
+
+.stripped:nth-child(even), .nav>li>a:hover, .nav>li>a:active, .nav>li>a:focus, .table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: var(--main-light-color) !important;
+}
+
+.index-widget .info-box-icon {
+     background: var(--third-color) !important;
+}
+
+.nav-tabs-custom>.nav-tabs {
+    border-bottom-color: var(--main-light-color) !important;
+}
+
+.nav-tabs-custom {
+    background: transparent;
+}
+
+.nav-tabs-custom a {
+    color: var(--font-color) !important;
+}
+
+.nav-tabs-custom>.nav-tabs>li.header {
+    color: var(--font-color) !important;
+}
+
+.nav-tabs-custom>.tab-content {
+    background: var(--main-color) !important;
+}
+
+.nav-tabs-custom.box-tabs .nav-tabs li.active, .nav-tabs-custom>.nav-tabs>li.active {
+    border-top: 2px solid  var(--third-color) !important;
+    border-bottom: 3px solid var(--main-color) !important;
+}
+
+.nav-tabs-custom.box-tabs .nav-tabs li.active:hover {
+    border-bottom: 3px solid var(--main-color) !important;
+}
+
+.nav-tabs-custom li.active a:hover {
+    border-bottom: 1px solid  var(--main-color) !important;
+}
+
+.nav-tabs-custom.box-tabs .nav-tabs li:hover, .nav-tabs-custom a:hover {
+    border-bottom: 2px solid  var(--third-color) !important;
+}
+
+.nav-filter-button, .nav-tabs-custom.box-tabs ul li a:hover, .navbar-custom-menu > ul > li > a, .nav-stacked>li>a,
+#navbar-collapse > ul > li > a, .navbar-nav>.messages-menu>.dropdown-menu>li .menu>li>a, .content-header,
+.select2-container--default .select2-selection--multiple .select2-selection__choice, .header-tab,
+.index-widget .item-icon {
+    color: var(--font-color) !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: var(--main-light-color) !important;
+    border: 1px solid var(--main-dark-color) !important;
+    color: var(--font-color) !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    color: var(--main-dark-color) !important;
+}
+
+.tabbed-box-tab-selected-badge-counter {
+    border: 1px solid var(--third-color) !important;
+    color: var(--third-color) !important;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-light-color) !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-color) !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-dark-color) !important;
+}
+
+.navbar-default {
+    background-color: var(--main-color) !important;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    background-color: var(--main-light-color) !important;
+}
+
+.main-footer {
+    color: var(--secondary-light-color) !important;
+}
+
+@media (max-width: 767px) {
+.main-header .navbar .dropdown-menu li a {
+     color: inherit !important;
+    }
+}
+
+/* Define color in Django Table2 Boolean Columns */
+.false {
+    color: var(--facing-problems-color);
+}
+
+/* Define color in Django Table2 Boolean Columns */
+.true {
+    color: var(--success-color);
+}
+
+.note-toolbar.panel-heading, .note-editor.note-airframe .note-statusbar, .note-editor.note-frame .note-statusbar,
+.note-editor.note-airframe .note-statusbar .note-resizebar, .note-editor.note-frame .note-statusbar .note-resizebar {
+    background-color: var(--main-color) !important;
+}
+
+.sorting a {
+    color: var(--font-color) !important;
+}
+
+table.dataTable tbody,
+table.dataTable tbody tr,
+table.dataTable tbody td {
+  color: var(--font-color) !important;
+}
+
+table.dataTable tbody > tr.selected,
+table.dataTable tbody > tr > .selected {
+  background-color: var(--main-dark-color) !important;
+}
+
+table.dataTable tbody,
+table.dataTable tbody tr.selected,
+table.dataTable tbody td.selected {
+  color: var(--main-color) !important;
+}
+
+.asteriskField {
+    color: var(--third-color) !important;
+}
+
+.select2 .select2-selection {
+    border: 1px solid var(--main-dark-color) !important;
+}
+
+.slider {
+    background-color: var(--main-light-color) !important;
+}
+
+.slider:before {
+    background-color: var(--main-color) !important;
+}
+
+input:checked + .slider {
+    background-color: var(--success-color) !important;
+}
+
+.modal-header {
+    color: var(--main-color) !important;
+    background: var(--secondary-color) !important;
+    border-bottom: 1px solid var(--secondary-light-color) !important;
+}
+
+.modal-header.danger {
+    background: var(--facing-problems-color) !important;
+}
+
+.modal-header .close, .modal-header .close:hover {
+   color: var(--main-color) !important;
+}
+
+.sidebar-toggle {
+    color: var(--font-color) !important;
+}
+
+.sidebar-toggle:hover {
+    background-color: var(--main-light-color) !important;
+    color: var(--font-color) !important;
+}
+
+small {
+    color: var(--secondary-font-dark-color) !important;
+}
+
+.main-sidebar,
+.main-sidebar > .sidebar,
+.main-sidebar > .sidebar > .sidebar-menu,
+.main-sidebar > .sidebar > .sidebar-menu > li,
+.main-sidebar > .sidebar > .sidebar-menu > li > a {
+    background-color: var(--secondary-color) !important;
+    color: var(--main-dark-color) !important;
+}
+
+.main-sidebar > .sidebar > .sidebar-menu > .treeview > .treeview-menu,
+.main-sidebar > .sidebar > .sidebar-menu > .treeview > .treeview-menu > li,
+.main-sidebar > .sidebar > .sidebar-menu > .treeview > .treeview-menu > li > a {
+    background-color: var(--secondary-dark-color) !important;
+    color: var(--secondary-font-color) !important;
+}
+
+.main-sidebar > .sidebar > .sidebar-menu > .treeview > .treeview-menu > li > a:hover {
+    background-color: var(--secondary-light-color) !important;
+    color: var(--secondary-font-light-color) !important;
+}
+
+.main-sidebar .sidebar .sidebar-menu li.active,
+.main-sidebar .sidebar .sidebar-menu li.active > a {
+    background-color: var(--secondary-dark-color) !important;
+}
+
+.main-sidebar .sidebar .sidebar-menu li a:hover {
+    background-color: var(--secondary-light-color) !important;
+    color: var(--secondary-font-light-color) !important;
+}
+
+.main-footer {
+    background-color: var(--secondary-color);
+    color: var(--secondary-font-dark-color) !important;
+}
+
+.bg-green-active.dev,
+.bg-green-active.dev:hover {
+    background-color: var(--dev-env-color) !important;
+    color: var(--dev-env-font-light-color) !important;
+    cursor: default;
+}
+
+.main-sidebar.dev,
+.main-sidebar.dev > .sidebar,
+.main-sidebar.dev > .sidebar > .sidebar-menu,
+.main-sidebar.dev > .sidebar > .sidebar-menu > li,
+.main-sidebar.dev > .sidebar > .sidebar-menu > li > a {
+    background-color: var(--dev-env-color) !important;
+    color: var(--dev-env-font-light-color) !important;
+}
+
+.main-sidebar.dev > .sidebar > .sidebar-menu > .treeview > .treeview-menu,
+.main-sidebar.dev > .sidebar > .sidebar-menu > .treeview > .treeview-menu > li,
+.main-sidebar.dev > .sidebar > .sidebar-menu > .treeview > .treeview-menu > li > a {
+    background-color: var(--dev-env-dark-color) !important;
+    color: var(--dev-env-font-color) !important;
+}
+
+.main-sidebar.dev > .sidebar > .sidebar-menu > .treeview > .treeview-menu > li > a:hover {
+    background-color: var(--dev-env-light-color) !important;
+    color: var(--dev-env-font-color) !important;
+}
+
+.main-sidebar.dev .sidebar .sidebar-menu li.active,
+.main-sidebar.dev .sidebar .sidebar-menu li.active > a {
+    background-color: var(--dev-env-dark-color) !important;
+}
+
+.main-sidebar.dev .sidebar .sidebar-menu li a:hover {
+    background-color: var(--dev-env-light-color) !important;
+    color: var(--dev-env-font-light-color) !important;
+}
+
+.main-footer.dev {
+    background-color: var(--dev-env-color);
+    color: var(--dev-env-font-dark-color) !important;
+}
+
+.bg-orange-active.staging,
+.bg-orange-active.staging:hover {
+    background-color: var(--staging-env-color) !important;
+    color: var(--staging-env-font-light-color) !important;
+}
+
+.main-sidebar.staging,
+.main-sidebar.staging > .sidebar,
+.main-sidebar.staging > .sidebar > .sidebar-menu,
+.main-sidebar.staging > .sidebar > .sidebar-menu > li,
+.main-sidebar.staging > .sidebar > .sidebar-menu > li > a {
+    background-color: var(--staging-env-color) !important;
+    color: var(--staging-env-font-light-color) !important;
+}
+
+.main-sidebar.staging > .sidebar > .sidebar-menu > .treeview > .treeview-menu,
+.main-sidebar.staging > .sidebar > .sidebar-menu > .treeview > .treeview-menu > li,
+.main-sidebar.staging > .sidebar > .sidebar-menu > .treeview > .treeview-menu > li > a {
+    background-color: var(--staging-env-dark-color) !important;
+    color: var(--staging-env-font-color) !important;
+}
+
+.main-sidebar.staging > .sidebar > .sidebar-menu > .treeview > .treeview-menu > li > a:hover {
+    background-color: var(--staging-env-light-color) !important;
+    color: var(--staging-env-font-color) !important;
+}
+
+.main-sidebar.staging .sidebar .sidebar-menu li.active,
+.main-sidebar.staging .sidebar .sidebar-menu li.active > a {
+    background-color: var(--staging-env-dark-color) !important;
+}
+
+.main-sidebar.staging .sidebar .sidebar-menu li a:hover {
+    background-color: var(--staging-env-light-color) !important;
+    color: var(--staging-env-font-light-color) !important;
+}
+
+.main-footer.staging {
+    background-color: var(--staging-env-color);
+    color: var(--staging-env-font-dark-color) !important;
+}
+
+.box.box-default {
+    border-top: 2px solid var(--background-color-dark) !important;
+}
+
+.box.box-primary {
+    border-top: 2px solid var(--info-dark-color) !important;
+}
+
+.box.box-success {
+    border-top: 2px solid var(--success-color) !important;
+}
+
+.box.box-info {
+    border-top: 2px solid var(--info-color) !important;
+}
+
+.box.box-warning {
+    border-top: 2px solid var(--warning-color) !important;
+}
+
+.box-danger {
+    border-top: 2px solid var(--facing-problems-color) !important;
+}
+
+.btn-info {
+    background-color: var(--info-color) !important;
+    color: var(--font-light-color) !important;
+}
+
+.btn-warning, .bg-yellow, .callout.callout-warning, .alert-warning, .label-warning, .modal-warning .modal-body {
+    background-color: var(--warning-color) !important;
+    color: var(--font-light-color) !important;
+}
+
+.btn-danger, .bg-red, .callout.callout-danger, .alert-danger, .alert-error, .label-danger, .modal-danger .modal-body {
+    background-color: var(--facing-problems-color) !important;
+    color: var(--font-light-color) !important;
+}
+
+.btn-success, .bg-green, .bg-green-active, .callout.callout-success, .alert-success, .label-success,
+.modal-success .modal-body {
+    background-color: var(--success-color) !important;
+    color: var(--font-light-color) !important;
+}
+
+.btn-outline-primary-no-hover, .btn-outline-primary-no-hover:hover, .btn-outline-primary {
+    color: var(--info-dark-color) !important;
+    border-color: var(--info-dark-color) !important;
+}
+
+.btn-outline-primary:hover {
+    color: var(--main-color) !important;
+    background-color: var(--info-dark-color) !important;
+    border-color: var(--info-dark-color) !important;
+}
+
+.btn-outline-secondary-no-hover, .btn-outline-secondary-no-hover:hover, btn-outline-secondary {
+    color: var(--font-light-color) !important;
+    border-color: var(--font-light-color) !important;
+}
+
+.btn-outline-secondary:hover {
+    color: var(--main-color) !important;
+    background-color: var(--font-light-color) !important;
+    border-color: var(--font-light-color) !important;
+}
+
+.btn-outline-success-no-hover, .btn-outline-success-no-hover:hover, .btn-outline-success {
+    color: var(--success-color) !important;
+    border-color: var(--success-color) !important;
+}
+
+.btn-outline-success:hover {
+    color: var(--main-color) !important;
+    background-color: var(--success-color) !important;
+    border-color: var(--success-color !important;
+}
+
+.btn-outline-danger-no-hover, .btn-outline-danger-no-hover:hover, .btn-outline-danger {
+    color: var(--facing-problems-color) !important;
+    border-color: var(--facing-problems-color) !important;
+}
+
+.btn-outline-danger:hover {
+    color: var(--main-color) !important;
+    background-color: var(--facing-problems-color) !important;
+    border-color: var(--facing-problems-color) !important;
+}
+
+.btn-outline-warning-no-hover, .btn-outline-warning-no-hover:hover, .btn-outline-warning {
+    color: var(--warning-color) !important;
+    border-color: var(--warning-color) !important;
+}
+
+.btn-outline-warning:hover {
+    color: var(--font-color) !important;
+    background-color: var(--warning-color) !important;
+    border-color: var(--warning-color) !important;
+}
+
+.btn-outline-info-no-hover, .btn-outline-info-no-hover:hover, .btn-outline-info {
+    color: var(--info-color) !important;
+    border-color: var(--info-color) !important;
+}
+
+.btn-outline-info:hover {
+    color: var(--main-color) !important;
+    background-color: var(--info-color !important);
+    border-color: var(--info-color) !important;
+}
+
+.btn-outline-primary.focus, .btn-outline-primary:focus {
+    box-shadow: 0 0 0 0.2rem var(--info-dark-color) !important;
+}
+
+.btn-outline-secondary.focus, .btn-outline-secondary:focus {
+    box-shadow: 0 0 0 0.2rem var(--font-light-color) !important;
+}
+
+.btn-outline-success.focus, .btn-outline-success:focus {
+    box-shadow: 0 0 0 0.2rem var(--success-color !important;
+}
+
+.btn-outline-danger.focus, .btn-outline-danger:focus {
+    box-shadow: 0 0 0 0.2rem var(--facing-problems-color) !important;
+}
+
+.btn-outline-warning.focus, .btn-outline-warning:focus {
+    box-shadow: 0 0 0 0.2rem var(--warning-color) !important;
+}
+
+.btn-outline-info.focus, .btn-outline-info:focus {
+    box-shadow: 0 0 0 0.2rem var(--info-color) !important;
+}
+
+.white-icon > i, .text-white {
+    color: var(--white) !important;
+}
+
+.black-icon > i, .text-black {
+    color: var(--black) !important;
+}
+
+.green-icon > i, .text-green {
+    color: var(--green) !important;
+}
+
+.yellow-icon > i, .text-yellow {
+    color: var(--yellow) !important;
+}
+
+.red-icon > i, .text-red {
+    color: var(--red) !important;
+}
+
+.gray-icon > i, .text-gray {
+    color: var(--gray-icon) !important;
+}
+
+.blue-icon > i, .text-blue {
+    color: var(--blue) !important;
+}
+
+.white-icon > i, .text-white {
+    color: var(--white) !important;
+}
+
+.aqua-icon > i, .text-aqua {
+    color: var(--aqua) !important;
+}
+
+.maroon-icon > i, .text-maroon {
+    color: var(--maroon) !important;
+}
+
+.bg-white {
+    background-color: var(--white) !important;
+}
+
+.bg-black {
+    background-color: var(--black) !important;
+}
+
+.bg-green {
+    background-color: var(--green) !important;
+}
+
+.bg-yellow {
+    background-color: var(--yellow) !important;
+}
+
+.bg-red {
+    background-color: var(--red) !important;
+}
+
+.bg-gray {
+    background-color: var(--gray-icon) !important;
+}
+
+.bg-blue {
+    background-color: var(--blue) !important;
+}
+
+.bg-white {
+    background-color: var(--white) !important;
+}
+
+.bg-aqua {
+    background-color: var(--aqua) !important;
+}
+
+.bg-maroon {
+    background-color: var(--maroon) !important;
+}

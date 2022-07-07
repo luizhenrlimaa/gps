@@ -1,0 +1,5 @@
+
+  - name: Load Images
+    command: "docker load -i {{ image_temp_path }}/{{ item.replace('/', '-').replace(':', '-') }}.tar.gz"
+    with_items:
+      - "{{ images }}"

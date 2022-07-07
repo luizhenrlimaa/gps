@@ -1,0 +1,17 @@
+- debug: var=files
+
+- name: Make sure destination dir exists
+  file:
+    path: "{{ source_path }}/{{ item | dirname }}"
+    state: directory
+    recurse: yes
+    mode: 0777
+  with_items:
+    - "{{ files }}"
+
+- name: Copy files to server
+  copy:
+    src: "{{ local_temp_repo_path }}/{{ item }}"
+    dest: "{{ source_path }}/{{ item }}"
+  with_items:
+    - "{{ files }}"

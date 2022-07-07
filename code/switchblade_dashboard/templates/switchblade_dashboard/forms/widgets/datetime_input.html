@@ -1,0 +1,21 @@
+{% load i18n %}
+<div class="input-group">
+    <div class="input-group-addon">
+        <i class="fa fa-calendar"></i>
+    </div>
+
+    <input type="{{ widget.type }}" name="{{ widget.name }}"{% if widget.value != None %} value="{{ widget.value|stringformat:'s' }}" {% endif %} class="form-control pull-right" placeholder={% trans "Click to select date and time" %} autocomplete="off"  {% include "django/forms/widgets/attrs.html" %}>
+
+
+</div>
+{% if not widget.attrs.ignore_js %}
+
+<script>
+    $(function () {
+        $('#{{ widget.attrs.id }}').datetimepicker({
+            format: 'YYYY-MM-DD HH:mm'
+        })
+    })
+</script>
+{% endif %}
+

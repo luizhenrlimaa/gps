@@ -1,0 +1,75 @@
+{
+  "name": "vuejs-clipper",
+  "version": "0.2.9",
+  "author": "timtnlee",
+  "homepage": "https://timtnleeproject.github.io/vuejs-clipper/",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timtnleeProject/vuejs-clipper.git"
+  },
+  "bugs": {
+    "url": "https://github.com/timtnleeProject/vuejs-clipper/issues"
+  },
+  "keywords": [
+    "vue",
+    "image",
+    "clip",
+    "crop",
+    "clipper",
+    "cropper"
+  ],
+  "main": "dist/vuejs-clipper.umd.js",
+  "module": "src/clipper.js",
+  "scripts": {
+    "build": "vue-cli-service build --target lib --name vuejs-clipper src/clipper.js",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "exif-js": "^2.3.0",
+    "rxjs": "^6.3.2",
+    "vue-rx": "^6.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.3",
+    "@vue/cli-plugin-eslint": "^3.0.3",
+    "@vue/cli-plugin-unit-mocha": "^3.0.3",
+    "@vue/cli-service": "^3.0.3",
+    "@vue/test-utils": "^1.0.0-beta.20",
+    "chai": "^4.1.2",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1",
+    "vue-template-compiler": "^2.5.17",
+    "webpack-bundle-analyzer": "^3.0.2",
+    "webpack-dev-server": ">=3.1.11"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {
+      "indent": [
+        "error",
+        2
+      ]
+    },
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}

@@ -1,0 +1,217 @@
+{% extends "switchblade_dashboard/base.html" %}
+{% load dashboard_tag %}
+{% load static %}
+
+
+{% block content_main %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css" rel="stylesheet"/>
+
+<style>
+myInput {
+  background-image: url('/css/searchicon.png'); /* Add a search icon to input */
+  background-position: 10px 12px; /* Position the search icon */
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  width: 100%; /* Full-width */
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 40px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 12px; /* Add some space below the input */
+}
+
+myTable {
+  border-collapse: collapse; /* Collapse borders */
+  width: 100%; /* Full-width */
+  border: 1px solid #ddd; /* Add a grey border */
+  font-size: 18px; /* Increase font-size */
+}
+
+myTable th, myTable td {
+  text-align: left; /* Left-align text */
+  padding: 12px; /* Add padding */
+}
+
+myTable tr {
+  /* Add a bottom border to all table rows */
+  border-bottom: 1px solid #ddd;
+}
+
+myTable tr.header, myTable tr:hover {
+  /* Add a grey background color to the table header and on hover */
+  background-color: #f1f1f1;
+}
+</style>
+
+
+    <div class="box box-default">
+    <div class="box-header with-border">
+        <h3 class="box-title"></h3>
+    </div>
+    <div class="box-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="tab-content">
+                        <div class="col-md-7">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">Selecionar certificados para a requisição</h3>
+                                </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body">
+                                    <form method="POST" action="{% url 'register-sub' aluno.pk %}">
+                                        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Buscar...">
+                                        <table id="table-vinculo" class="table table-bordered table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th>Selecionar</th>
+                                            <th>Titulo</th>
+                                            <th>Categoria</th>
+                                            <th>Atividade</th>
+                                            <th>Nível de Participação</th>
+                                            <th>Toltal de Horas</th>
+                                            <th>Horas Convertidas</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {%for c in todos_certificados%}
+                                            <tr>
+                                                <td><input type="checkbox" name="selected" value="{{c.pk}}"></td>
+                                                <td>{{c.titulo}}</td>
+                                                <td>{{c.categoria}}</td>
+                                                <td>{{c.atividade}}</td>
+                                                <td>{{c.nivel_participacao}}</td>
+                                                <td>{{c.total_de_horas}}</td>
+                                                <td>{{c.horas_convertidas}}</td>
+                                            </tr>
+                                        <script>
+                                            $('input[name=selected]').change(function(){
+                                                if($(this).is(':checked')) {
+                                                    console.log('{{c}}');
+                                                } else {
+                                                    console.log('Checkbox is not checked..');
+                                                }
+                                            });
+                                      </script>
+                                        {%endfor%}
+                                        </tbody>
+                                      </table>
+
+                                    {% csrf_token %}
+
+                                        <button type="submit" value="submit" class="btn btn-success btn-lg"> Sunmeter </button>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                                <div class="box">
+                                    <div class="box-header">
+                                        <h3 class="box-title">Certificados selecionados</h3>
+                                    </div>
+                                        <!-- /.box-header -->
+                                        <div class="box-body">
+                                            <table id="table-selecionado" class="table table-bordered table-hover">
+                                            <tr>
+                                                <th>Atividade</th>
+                                                <th>Limite</th>
+                                                <th>Selecionado</th>
+                                            </tr>
+                                            <tr>
+                                                <td>Atividades de iniciação à docência e à pesquisa</td>
+                                                <td>120</td>
+                                                <td id="IDP"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Atividades de natureza acadêmica</td>
+                                                <td>60</td>
+                                                <td id="NAAC"></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Produção técnico-científica</td>
+                                                <td>120</td>
+                                                <td id="PTC"></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Vivência profissional complementar</td>
+                                                <td>120</td>
+                                                <td id="VPC"></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Atividades de extensão</td>
+                                                <td>120</td>
+                                                <td id="EXT"></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Cursos de línguas, certificações e outros</td>
+                                                <td>45</td>
+                                                <td id="OUTR"></td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Eventos diversos</td>
+                                                <td>80</td>
+                                                <td id="DIVERSOS"></td>
+                                            </tr>
+                                            </table>
+                                        </div>
+                                </div>
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("table-vinculo");
+  tr = table.getElementsByTagName("tr");
+
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+{% endblock content_main %}
+
+
+
+
+{% block title %}
+    {{ form_data.PageTitle }}
+{% endblock %}
+
+{% block content_title %}
+    {{ form_data.PageTitle }}
+{% endblock %}
+
+{% block extraJS %}
+    <script src="{% static 'registros/js/form.js' %}"></script>
+
+     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
+       <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+       <script src="{% static 'js/app.js' %}"></script>
+{% endblock extraJS %}

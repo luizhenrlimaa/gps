@@ -1,0 +1,65 @@
+:root {
+
+    --box-bg-color: #071038;
+    --box-color: #C2C3CD;
+
+    --box-card-color: #000;
+
+    --box-body-box-shadow-color: transparent;
+
+    --date-input-bg-color: #494F69;
+    --date-input-color: #C2C3CD;
+    --date-input-border-color: #082040;
+
+    --filter-bg-color: #050D2F;
+    --filter-button-bg-color: #2B3B7C;
+    --filter-button-border-color: #171B43;
+    --filter-button-hover-bg-color: #2B3B7C;
+    --filter-button-hover-border-color: #171B43;
+
+    --form-group-bg-color: #494F69;
+    --form-group-color: #C2C3CD;
+    --form-group-border-color: #082040;
+
+    --main-bg-color: #050D2F;
+    --main-color: #C2C3CD;
+
+    --modal-body-bg-color: #050D2F;
+
+    --modal-footer-bg-color: #071038;
+    --modal-footer-border-color: #091D38;
+
+    --modal-header-color: #C2C3CD;
+    --modal-header-bg-color: #2B3B7C;
+    --modal-header-border-color: #091D38;
+
+    --nav-bg-color: #071038;
+    --nav-color: #C2C3CD;
+
+    --pagination-control-color: #C2C3CD;
+    --pagination-control-hover-color: #fff;
+    --pagination-control-bg-color: transparent;
+
+    --slider-bg-color: #2B3B7C;
+
+    --select2-dropdown-color: #555;
+    --select2-dropdown-bg-color: #494F69;
+    --select2-dropdown-border-color: #082040;
+
+    --select2-selection-bg-color:  #494F69;
+    --select2-selection-border-color: #082040;
+    --select2-selection-color: #C2C3CD;
+
+    --table-bg-color: transparent;
+    --table-td-bg-color: inherit;
+    --table-th-bg-color: inherit;
+    --table-color: #fff;
+    --table-border-color: transparent;
+    --table-td-color: inherit;
+    --table-th-color: inherit;
+    --table-td-border-color: transparent;
+    --table-th-border-color: transparent;
+
+
+}
+

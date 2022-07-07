@@ -1,0 +1,12 @@
+.jumper {
+    transition: background 2s;
+    transition: margin-top .2s;
+}
+
+.jumper.active {
+    margin-top: -5px;
+}
+
+.jumper.active .bg-red {
+    background: red!important;
+}

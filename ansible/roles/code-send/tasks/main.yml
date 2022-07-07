@@ -1,0 +1,10 @@
+
+- name: Remove old file
+  file:
+    path: "code/code.tar.gz"
+    state: absent
+
+- name: Send code.tar.gz to environment
+  copy:
+    src: "code/code.tar.gz"
+    dest: "{{ storage_mount_path }}"

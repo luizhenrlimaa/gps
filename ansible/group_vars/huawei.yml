@@ -1,0 +1,44 @@
+#
+# ANSIBLE SETTINGS
+#
+# Use folder paths without final slash /
+#
+local_temp_repo_path: "/mnt/d/temp/rpc"         # Local temp folder to use during deploy
+
+repository: "ssh://git@git.huawei.com:2222/inatel/rpc.git" # Project Code Repository
+local_repository: "/mnt/d/projects/rpc"          # Local temp folder to use during deploy
+release: "v1.0.3"                                       # Branch name or Tag for deployment
+source_path: "/opt/rpc-app/rpc"                 # Folder to store the project code
+
+#
+# Storage Server Settings
+#
+
+storage_url: 10.226.124.203                            # ip/hostname of the NFS Server
+storage_mount_path: "/opt/rpc-app"                   # Mount point of the NFS Share on NFS Clients
+
+#
+# Docker Swarm Settings
+#
+
+swarm_manager: 10.226.123.32                         # IP of the Swarm Manager
+swarm_port: 2377                                      # Swarm Port
+stack_name: rpc-app                                      # Swarm Stack Name
+
+
+#
+# Docker Images Deployment
+#
+
+image_temp_path: "/opt/rpc-app/images"                     # Path where images will be uploaded and extracted
+local_docker_registry: "img.local"
+images:                                               # Images to be Deployed
+  - img.local/python:latest
+#  - img.local/redis:latest
+#  - img.local/nginx:latest
+#  - img.local/portainer:latest
+#  - img.local/portainer-agent:latest
+#  - img.local/crunchy-backup:latest
+#  - img.local/crunchy-pgdump:latest
+#  - img.local/crunchy-pgrestore:latest
+#  - img.local/crunchy-postgres-gis:latest

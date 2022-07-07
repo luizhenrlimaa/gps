@@ -1,0 +1,59 @@
+
+/* ------------------------------------- */
+/*                                       */
+/* Tooltip Style                         */
+/*                                       */
+/* ------------------------------------- */
+
+.has-tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.has-tooltip .tooltip-text {
+  font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica,Arial, sans-serif;
+  visibility: hidden;
+  background-color: #545252;
+  color: #E4E4E4;
+  text-align: center;
+  font-size: 18px;
+  padding: 5px 10px;
+  border-radius: 3px;
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -75px;
+  width: 150px;
+  white-space: pre-wrap;
+}
+
+.has-tooltip .tooltip-text::after {
+  content: " ";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #545252 transparent transparent transparent;
+}
+
+.has-tooltip:hover .tooltip-text {
+  visibility: visible;
+}
+
+.nav-tabs-custom>.nav-tabs>li.active {
+    border-top-color: #DD4B39 !important;
+}
+
+/* -------------------------- */
+/*                            */
+/* Custom Disabled element    */
+/*                            */
+/* -------------------------- */
+
+.processing {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
